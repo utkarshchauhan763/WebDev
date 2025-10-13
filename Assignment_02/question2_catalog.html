@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+  Assignment: Product Catalog (Question 2)
+  - Table listing products with columns: Product Name, Description, Price, Availability
+  - Include one image per product inside a cell
+  - Demonstrate colspan/rowspan where suitable
+  - Only HTML
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product Catalog</title>
+  </head>
+  <body>
+    <h1>Product Catalog</h1>
+    <table border="1" cellpadding="6" cellspacing="0" title="Product Catalog Table">
+      <caption>Available Products</caption>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="https://example.com/product1.jpg" alt="Product 1 image" width="80" height="80"><br>
+            Product One
+          </td>
+          <td>High quality widget for daily use.</td>
+          <td>₹499</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td rowspan="2">
+            <img src="https://example.com/product2.jpg" alt="Product 2 image" width="80" height="80"><br>
+            Product Two (Bundle)
+          </td>
+          <td>Bundle includes multiple accessories.</td>
+          <td>₹999</td>
+          <td>Limited</td>
+        </tr>
+        <tr>
+          <td colspan="2">Special offer: Buy one get one free for a limited time.</td>
+          <td>Out of Stock</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

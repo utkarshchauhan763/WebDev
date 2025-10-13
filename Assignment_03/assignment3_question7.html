@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 7: Conference Schedule Page
+  - HTML tables and semantic tags
+  - Sessions: Morning, Afternoon, Evening
+  - Columns: Time, Topic, Speaker
+  - Use thead, tbody, tfoot for structure
+  - Only HTML
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tech Conference 2025 Schedule</title>
+  </head>
+  <body>
+    <header>
+      <h1>Tech Conference 2025 - Schedule</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Conference Schedule - October 13, 2025</h2>
+        <table border="1" cellpadding="8" cellspacing="0" title="Conference Schedule">
+          <thead>
+            <tr>
+              <th>Session</th>
+              <th>Time</th>
+              <th>Topic</th>
+              <th>Speaker</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="3">Morning</td>
+              <td>09:00 - 09:15</td>
+              <td>Registration & Welcome Coffee</td>
+              <td>Conference Team</td>
+            </tr>
+            <tr>
+              <td>09:15 - 10:30</td>
+              <td>Keynote: The Future of Web Development</td>
+              <td>Dr. Sarah Chen</td>
+            </tr>
+            <tr>
+              <td>10:45 - 12:00</td>
+              <td>Workshop: Modern JavaScript Frameworks</td>
+              <td>Alex Rodriguez</td>
+            </tr>
+            <tr>
+              <td rowspan="2">Afternoon</td>
+              <td>13:30 - 14:45</td>
+              <td>Panel: Accessibility in Web Design</td>
+              <td>Panel of 4 Experts</td>
+            </tr>
+            <tr>
+              <td>15:00 - 16:15</td>
+              <td>Technical Talk: Performance Optimization</td>
+              <td>Maria Gonzalez</td>
+            </tr>
+            <tr>
+              <td rowspan="2">Evening</td>
+              <td>16:30 - 17:30</td>
+              <td>Lightning Talks: Community Projects</td>
+              <td>Various Speakers</td>
+            </tr>
+            <tr>
+              <td>17:45 - 18:30</td>
+              <td>Closing Keynote: Career Growth in Tech</td>
+              <td>James Wilson</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <em>All sessions include 15-minute Q&A. Lunch break: 12:00 - 13:30</em>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>For more information, visit: <a href="#">www.techconference2025.com</a></p>
+    </footer>
+  </body>
+</html>

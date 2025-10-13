@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 10: Dropdown-based Selection Page
+  - Multiple select dropdowns for Country, State, City, Favorite Tourist Place
+  - Each dropdown has a pre-selected option
+  - Paragraph summarizing choices
+  - Only HTML
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Location & Preference Selector</title>
+  </head>
+  <body>
+    <h1>Travel Preference Selector</h1>
+    
+    <h2>Select Your Location Preferences</h2>
+    
+    <p>
+      <label for="country-select">Country:</label><br>
+      <select id="country-select" name="country">
+        <option value="usa">United States</option>
+        <option value="india" selected>India</option>
+        <option value="uk">United Kingdom</option>
+        <option value="france">France</option>
+        <option value="japan">Japan</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="state-select">State/Province:</label><br>
+      <select id="state-select" name="state">
+        <option value="california">California</option>
+        <option value="maharashtra" selected>Maharashtra</option>
+        <option value="karnataka">Karnataka</option>
+        <option value="rajasthan">Rajasthan</option>
+        <option value="kerala">Kerala</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="city-select">City:</label><br>
+      <select id="city-select" name="city">
+        <option value="los-angeles">Los Angeles</option>
+        <option value="mumbai" selected>Mumbai</option>
+        <option value="pune">Pune</option>
+        <option value="bangalore">Bangalore</option>
+        <option value="delhi">Delhi</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="tourist-place-select">Favorite Tourist Place:</label><br>
+      <select id="tourist-place-select" name="tourist-place">
+        <option value="gateway-of-india" selected>Gateway of India</option>
+        <option value="marine-drive">Marine Drive</option>
+        <option value="elephanta-caves">Elephanta Caves</option>
+        <option value="juhu-beach">Juhu Beach</option>
+        <option value="chhatrapati-shivaji-terminus">Chhatrapati Shivaji Terminus</option>
+      </select>
+    </p>
+
+    <h2>Your Selection Summary</h2>
+    <p>
+      Based on your selections, you have chosen <strong>India</strong> as your preferred country, 
+      specifically the state of <em>Maharashtra</em> and the city of <code>Mumbai</code>. 
+      Your favorite tourist attraction is the <mark>Gateway of India</mark>, which is one of 
+      Mumbai's most iconic landmarks and a perfect starting point for exploring the city's 
+      rich history and culture.
+    </p>
+    
+    <p>
+      <small>Note: This is a demonstration of dropdown selections using only HTML. 
+      In a real application, JavaScript would be used to dynamically update the summary 
+      based on actual user selections.</small>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 2: Product Catalog Page
+  - Table listing products with columns: Product Name, Description, Price, Availability
+  - Include one image per product inside a cell
+  - Use colspan/rowspan where necessary
+  - Only HTML
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product Catalog</title>
+  </head>
+  <body>
+    <h1>Online Store - Product Catalog</h1>
+    
+    <table border="1" cellpadding="8" cellspacing="0" title="Product Catalog">
+      <caption>Available Products</caption>
+      <thead>
+        <tr>
+          <th>Product Image & Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="https://example.com/laptop.jpg" alt="Gaming Laptop" width="100" height="80"><br>
+            <strong>Gaming Laptop</strong>
+          </td>
+          <td>High-performance laptop with dedicated graphics card, perfect for gaming and development.</td>
+          <td>₹75,000</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td rowspan="2">
+            <img src="https://example.com/phone.jpg" alt="Smartphone Bundle" width="100" height="80"><br>
+            <strong>Smartphone Bundle</strong>
+          </td>
+          <td>Latest smartphone with 128GB storage</td>
+          <td>₹25,000</td>
+          <td>Limited Stock</td>
+        </tr>
+        <tr>
+          <td colspan="2">Bundle includes: Phone case, screen protector, and wireless earbuds</td>
+          <td>Available</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://example.com/headphones.jpg" alt="Wireless Headphones" width="100" height="80"><br>
+            <strong>Wireless Headphones</strong>
+          </td>
+          <td>Premium noise-cancelling headphones with 30-hour battery life.</td>
+          <td>₹8,500</td>
+          <td>In Stock</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

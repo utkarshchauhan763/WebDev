@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 10
+  Labeled ASCII diagram showing client, server, database, and APIs
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Q10 - Web Architecture Diagram</title>
+  </head>
+  <body>
+    <h1>Basic Web Architecture Flow</h1>
+    <pre>
+[Client / Browser]
+     |
+     | -- (1) HTTP Request (e.g., GET /products)
+     v
+[Web Server / Application Server]
+     |  (Routes request, runs business logic)
+     | -- (2) API Call / DB Query --> [Database]
+     |                         <-- (3) Data Response
+     v
+[API Response]
+     |
+     | -- (4) HTTP Response (JSON/HTML)
+     v
+[Client renders response]
+
+Components:
+ - Client: Browser or mobile app that sends requests
+ - Web Server / App Server: Receives requests, runs application code, exposes APIs
+ - Database: Persistent storage (SQL/NoSQL)
+ - APIs: Interfaces (REST/GraphQL) used for communication between client and server components
+    </pre>
+  </body>
+</html>

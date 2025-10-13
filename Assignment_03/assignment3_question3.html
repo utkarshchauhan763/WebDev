@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 3: Course Registration Form Structure
+  - Uses fieldset/legend for grouping fields
+  - Select dropdown for course selection
+  - Input fields for name and email
+  - Table at bottom showing available course schedules
+  - Only HTML
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Course Registration Form</title>
+  </head>
+  <body>
+    <h1>Course Registration</h1>
+
+    <fieldset>
+      <legend>Personal Information</legend>
+      <p>
+        <label for="student-name">Full Name:</label><br>
+        <input type="text" id="student-name" name="student-name" title="Enter your full name" />
+      </p>
+      <p>
+        <label for="student-email">Email Address:</label><br>
+        <input type="email" id="student-email" name="student-email" title="Enter your email address" />
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Course Selection</legend>
+      <p>
+        <label for="course-select">Select Course:</label><br>
+        <select id="course-select" name="course-select">
+          <option value="">-- Choose a course --</option>
+          <option value="web-basics">Web Development Basics</option>
+          <option value="html-css">HTML & CSS Fundamentals</option>
+          <option value="javascript">JavaScript Programming</option>
+          <option value="react">React Framework</option>
+        </select>
+      </p>
+    </fieldset>
+
+    <h2>Available Course Schedules</h2>
+    <table border="1" cellpadding="6" cellspacing="0" title="Course Schedule Information">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Instructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td>10:00 AM - 12:00 PM</td>
+          <td>Dr. Smith</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>2:00 PM - 4:00 PM</td>
+          <td>Prof. Johnson</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>6:00 PM - 8:00 PM</td>
+          <td>Ms. Williams</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>9:00 AM - 11:00 AM</td>
+          <td>Mr. Brown</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

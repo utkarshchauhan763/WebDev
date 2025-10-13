@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 2
+  Simple diagram showing client-server model using ASCII art
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Q2 - Client-Server Diagram</title>
+  </head>
+  <body>
+    <h1>Client-Server Model (Simple Diagram)</h1>
+    <pre>
+Client (Browser)
+  |  - Sends HTTP request (GET /index.html)
+  v
++----------------+           +----------------+
+|  Web Browser   | --HTTP--> |   Web Server   |
++----------------+           +----------------+
+                                  |
+                                  |  (Server processes request, queries DB, returns HTML)
+                                  v
+                             +----------------+
+                             |   Database     |
+                             +----------------+
+
+Response: HTML/CSS/JS is returned to the browser which renders the page.
+    </pre>
+  </body>
+</html>

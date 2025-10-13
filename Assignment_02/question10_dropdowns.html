@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+  Assignment: Dropdown-based Selection Page (Question 10)
+  - Multiple select dropdowns for Country, State, City, Favorite Tourist Place
+  - Pre-selected options and a paragraph summarizing choices
+  - Only HTML
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dropdown Selection</title>
+  </head>
+  <body>
+    <h1>Location Selector</h1>
+    <p>
+      <label for="country">Country:</label>
+      <select id="country" name="country">
+        <option value="india" selected>India</option>
+        <option value="usa">United States</option>
+        <option value="uk">United Kingdom</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="state">State:</label>
+      <select id="state" name="state">
+        <option value="maharashtra" selected>Maharashtra</option>
+        <option value="karnataka">Karnataka</option>
+        <option value="tamilnadu">Tamil Nadu</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="city">City:</label>
+      <select id="city" name="city">
+        <option value="mumbai" selected>Mumbai</option>
+        <option value="pune">Pune</option>
+        <option value="nagpur">Nagpur</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="place">Favorite Tourist Place:</label>
+      <select id="place" name="place">
+        <option value="gateway" selected>Gateway of India</option>
+        <option value="elephanta">Elephanta Caves</option>
+        <option value="marine">Marine Drive</option>
+      </select>
+    </p>
+
+    <p>Summary: I chose <strong>India</strong> - <em>Maharashtra</em> - <code>Mumbai</code> and my favorite place is <mark>Gateway of India</mark>.</p>
+  </body>
+</html>

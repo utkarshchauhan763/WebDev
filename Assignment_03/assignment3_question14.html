@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 14: Movie Database Page
+  - Table with columns: Movie Name, Genre, Year, IMDB Rating, Link
+  - Include attributes like border, title, colspan
+  - Add caption at top and note at bottom using small
+  - Only HTML
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Database</title>
+  </head>
+  <body>
+    <h1>Popular Movies Database</h1>
+    
+    <table border="2" cellpadding="8" cellspacing="0" title="Popular Movies Information">
+      <caption><strong>Top Rated Movies Collection</strong></caption>
+      <thead>
+        <tr>
+          <th>Movie Name</th>
+          <th>Genre</th>
+          <th>Year</th>
+          <th>IMDB Rating</th>
+          <th>More Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The Shawshank Redemption</td>
+          <td>Drama</td>
+          <td>1994</td>
+          <td>9.3/10</td>
+          <td><a href="#" title="View detailed information">Details</a></td>
+        </tr>
+        <tr>
+          <td>The Godfather</td>
+          <td>Crime, Drama</td>
+          <td>1972</td>
+          <td>9.2/10</td>
+          <td><a href="#" title="View detailed information">Details</a></td>
+        </tr>
+        <tr>
+          <td>The Dark Knight</td>
+          <td>Action, Crime, Drama</td>
+          <td>2008</td>
+          <td>9.0/10</td>
+          <td><a href="#" title="View detailed information">Details</a></td>
+        </tr>
+        <tr>
+          <td>Pulp Fiction</td>
+          <td>Crime, Drama</td>
+          <td>1994</td>
+          <td>8.9/10</td>
+          <td><a href="#" title="View detailed information">Details</a></td>
+        </tr>
+        <tr>
+          <td>Forrest Gump</td>
+          <td>Drama, Romance</td>
+          <td>1994</td>
+          <td>8.8/10</td>
+          <td><a href="#" title="View detailed information">Details</a></td>
+        </tr>
+        <tr>
+          <td colspan="3"><strong>Average Rating of Listed Movies</strong></td>
+          <td><strong>9.04/10</strong></td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p>
+      <small>
+        Note: IMDB ratings are subject to change and represent user ratings as of October 2025. 
+        This database is for educational purposes and demonstrates HTML table structure with 
+        semantic markup and accessibility attributes.
+      </small>
+    </p>
+  </body>
+</html>

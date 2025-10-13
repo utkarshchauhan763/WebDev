@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 3
+  Describe how a browser requests and displays a web page from a web server
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Q3 - Browser Request and Render Flow</title>
+  </head>
+  <body>
+    <h1>How a Browser Requests and Displays a Web Page</h1>
+    <ol>
+      <li>URL entered or link clicked: The browser parses the URL (scheme, host, path, query).</li>
+      <li>DNS lookup: The browser resolves the domain name to an IP address via DNS.</li>
+      <li>TCP connection & TLS handshake: The browser opens a TCP connection to the server and performs a TLS handshake for HTTPS.</li>
+      <li>HTTP request: The browser sends an HTTP request (for example, GET /index.html) including headers (User-Agent, Accept, Cookies).</li>
+      <li>Server processing: The web server receives the request, routes it to the appropriate handler, which may query databases or call other services, and prepares a response (HTML, JSON, etc.).</li>
+      <li>HTTP response: The server sends back the response with status code (200 OK, 404, etc.) and response headers (Content-Type, Cache-Control).</li>
+      <li>Browser parsing: The browser parses the HTML. While parsing, it builds a DOM (Document Object Model). It discovers CSS and JS resources and requests them as needed.</li>
+      <li>CSS & JS handling: The browser fetches CSS (builds CSSOM) and JS (executes scripts). Render-blocking scripts may pause parsing until executed.</li>
+      <li>Layout and paint: The browser combines DOM and CSSOM into a render tree, computes layout, and paints pixels to the screen.</li>
+      <li>User interaction: After rendering, event listeners and further dynamic updates (DOM changes) can modify the page.</li>
+    </ol>
+  </body>
+</html>

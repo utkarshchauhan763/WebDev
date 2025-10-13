@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+  Assignment: Course Registration Form (Question 3)
+  - Uses fieldset/legend, select dropdown for course, input fields for name and email
+  - A table at the bottom shows available course schedules
+  - Only HTML (no form submission required)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Course Registration</title>
+  </head>
+  <body>
+    <h1>Course Registration</h1>
+
+    <fieldset>
+      <legend>Student Information</legend>
+      <p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" title="Enter your full name" />
+      </p>
+      <p>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" title="Enter your email address" />
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Course Selection</legend>
+      <p>
+        <label for="course">Choose a course:</label>
+        <select id="course" name="course">
+          <option value="html" selected>HTML Basics</option>
+          <option value="css">CSS Fundamentals</option>
+          <option value="js">JavaScript Intro</option>
+        </select>
+      </p>
+    </fieldset>
+
+    <h2>Available Schedules</h2>
+    <table border="1" cellpadding="4" cellspacing="0" title="Course Schedules">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Instructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td>10:00 - 12:00</td>
+          <td>Ms. A</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>14:00 - 16:00</td>
+          <td>Mr. B</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>18:00 - 20:00</td>
+          <td>Ms. C</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

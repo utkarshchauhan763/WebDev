@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+  Assignment 3 - Question 9
+  List five web browsers and explain rendering engine differences
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Q9 - Browsers and Rendering Engines</title>
+  </head>
+  <body>
+    <h1>Common Web Browsers and Rendering Engines</h1>
+    <ol>
+      <li><strong>Google Chrome</strong> — Engine: Blink (layout and rendering) + V8 JavaScript engine. Blink is a fast, modern engine used by Chromium-based browsers.</li>
+      <li><strong>Mozilla Firefox</strong> — Engine: Gecko (layout and rendering) + SpiderMonkey JS engine. Gecko has its own layout and rendering pipeline and emphasizes standards and developer tools.</li>
+      <li><strong>Microsoft Edge</strong> — Engine: Blink (migrated from EdgeHTML). Edge uses Chromium's Blink and V8 but integrates Microsoft services and optimizations.
+      </li>
+      <li><strong>Apple Safari</strong> — Engine: WebKit (layout and rendering) + JavaScriptCore (JSC). WebKit is used on Apple platforms and focuses on energy efficiency and platform integration.</li>
+      <li><strong>Opera</strong> — Engine: Blink (as a Chromium-based browser) + V8. Opera adds features like built-in VPN and ad-blocker but relies on Blink for rendering.</li>
+    </ol>
+
+    <p>Differences summary:
+      <ul>
+        <li>Rendering engines differ in implementation details, performance characteristics, and feature support (e.g., layout algorithms, CSS features, and graphics stacks).</li>
+        <li>Chromium-based browsers (Chrome, Edge, Opera) share Blink and V8, so they behave similarly for most web pages.</li>
+        <li>Safari's WebKit and Firefox's Gecko are separate implementations and may render edge cases differently; testing across browsers is important.</li>
+      </ul>
+    </p>
+  </body>
+</html>
