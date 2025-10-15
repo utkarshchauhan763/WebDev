@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+  Assignment 03_1 - Q19
+  Demonstrate form security attributes: autocomplete="off" and required on inputs
+  Include a note explaining why turning off autocomplete can improve security
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Q19 - Form Security</title>
+  </head>
+  <body>
+    <h1>Form Security Demo</h1>
+    <form action="#" method="post" autocomplete="off">
+      <p>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required>
+      </p>
+      <p>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required>
+      </p>
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </form>
+
+    <p>
+      <strong>Note:</strong> Disabling autocomplete can improve security on shared or public devices by preventing the browser from storing and auto-filling sensitive credentials. However, it can also reduce usability for users on personal devices, and proper server-side protections (hashing, HTTPS, CSRF protection) are still essential.
+    </p>
+  </body>
+</html>

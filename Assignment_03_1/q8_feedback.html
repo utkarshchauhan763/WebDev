@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+  Assignment 03_1 - Q8
+  Feedback Form with textarea, radio buttons for rating (Good, Average, Poor), method="post" action="#"
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Q8 - Feedback Form</title>
+  </head>
+  <body>
+    <h1>Feedback Form</h1>
+    <form method="post" action="#">
+      <p>
+        <label for="feedback">Your Feedback:</label><br>
+        <textarea id="feedback" name="feedback" rows="6" cols="50" required></textarea>
+      </p>
+
+      <p>Rating:</p>
+      <p>
+        <input type="radio" id="good" name="rating" value="good" required>
+        <label for="good">Good</label><br>
+        <input type="radio" id="average" name="rating" value="average">
+        <label for="average">Average</label><br>
+        <input type="radio" id="poor" name="rating" value="poor">
+        <label for="poor">Poor</label>
+      </p>
+
+      <p>
+        <button type="submit">Submit Feedback</button>
+      </p>
+    </form>
+  </body>
+</html>

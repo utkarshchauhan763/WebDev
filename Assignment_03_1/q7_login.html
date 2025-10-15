@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+  Assignment 03_1 - Q7
+  Login form with a hidden CSRF token field
+  HTML comment explains the purpose of CSRF token
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Q7 - Login Form</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <!--
+      CSRF (Cross-Site Request Forgery) tokens prevent unauthorized commands from being submitted
+      by ensuring that form submissions come from the original site's pages. The server verifies the token.
+    -->
+    <form action="#" method="post">
+      <input type="hidden" name="csrf_token" value="dummy_csrf_token_1234567890">
+
+      <p>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required>
+      </p>
+      <p>
+        <label for="pwd">Password:</label><br>
+        <input type="password" id="pwd" name="pwd" required>
+      </p>
+      <p>
+        <button type="submit">Login</button>
+      </p>
+    </form>
+  </body>
+</html>

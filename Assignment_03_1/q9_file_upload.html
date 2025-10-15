@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+  Assignment 03_1 - Q9
+  File Upload Form accepting only .jpg and .png files using accept attribute
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Q9 - File Upload</title>
+  </head>
+  <body>
+    <h1>Upload Image</h1>
+    <form action="#" method="post" enctype="multipart/form-data">
+      <p>
+        <label for="image-upload">Choose an image (JPG or PNG only):</label><br>
+        <input type="file" id="image-upload" name="image-upload" accept="image/jpeg, image/png" required>
+      </p>
+      <p>
+        <small>Allowed file types: .jpg, .jpeg, .png. Maximum file size should be set on the server.</small>
+      </p>
+      <p>
+        <button type="submit">Upload</button>
+      </p>
+    </form>
+  </body>
+</html>

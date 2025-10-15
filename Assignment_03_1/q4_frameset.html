@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--
+  Assignment 03_1 - Q4
+  Create a frameset layout using <frameset> and <frame> tags.
+  Top frame: Navigation links (Home, About, Contact)
+  Bottom frame: Displays message "Welcome to My Website"
+  Note: frameset/frame are deprecated in HTML5 but used per assignment requirement.
+-->
+<frameset rows="100,*" border="1">
+  <frame src="nav_frame.html" name="topframe" title="Navigation Frame">
+  <frame src="welcome_frame.html" name="bottomframe" title="Welcome Frame">
+  <noframes>
+    <body>
+      <p>Your browser does not support frames. Welcome to My Website</p>
+    </body>
+  </noframes>
+</frameset>

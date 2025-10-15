@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+  Assignment 03_1 - Q3
+  Two iframes displayed one below another: first displays introduction page, second displays favorite hobby page.
+  Uses srcdoc to include simple HTML content inline (avoids needing external files).
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Q3 - Two Iframes</title>
+  </head>
+  <body>
+    <h1>Two Iframes Example</h1>
+
+    <iframe srcdoc="<h2>Introduction</h2><p>Hello, I'm Utkar. I'm learning web development and enjoy building accessible web pages.</p>" width="100%" height="200" title="Introduction Iframe"></iframe>
+
+    <iframe srcdoc="<h2>My Hobby</h2><p>I enjoy photography and exploring landscapes. Capturing moments inspires me.</p>" width="100%" height="200" title="Hobby Iframe"></iframe>
+
+    <p>These iframes use inline srcdoc content for simplicity. Replace srcdoc with src attributes pointing to actual pages if available.</p>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+  Assignment 03_1 - Q10
+  Contact Form with Full Name, Email, Subject, Message (placeholders and required)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Q10 - Contact Form</title>
+  </head>
+  <body>
+    <h1>Contact Us</h1>
+    <form action="#" method="post">
+      <p>
+        <label for="fullname">Full Name:</label><br>
+        <input type="text" id="fullname" name="fullname" placeholder="Your full name" required>
+      </p>
+      <p>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </p>
+      <p>
+        <label for="subject">Subject:</label><br>
+        <input type="text" id="subject" name="subject" placeholder="Reason for contacting" required>
+      </p>
+      <p>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="6" cols="50" placeholder="Write your message here..." required></textarea>
+      </p>
+      <p>
+        <button type="submit">Send Message</button>
+      </p>
+    </form>
+  </body>
+</html>
