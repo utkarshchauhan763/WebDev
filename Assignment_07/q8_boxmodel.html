@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+  Assignment 07 - Q8
+  Box Model Exploration Page
+  Visual representation of content, padding, border, and margin
+  Demonstrates default vs box-sizing: border-box
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q8 - Box Model Exploration</title>
+  <link rel="stylesheet" href="q8_boxmodel.css">
+</head>
+<body>
+  <header>
+    <h1>CSS Box Model Exploration</h1>
+    <p>Understanding content, padding, border, and margin</p>
+  </header>
+
+  <main class="container">
+    <!-- Default Box Model -->
+    <section class="demo-section">
+      <h2>Default Box Model (content-box)</h2>
+      <p class="description">
+        <strong>box-sizing: content-box</strong> (default)<br>
+        Width/height applies only to content. Padding and border are added on top.
+      </p>
+      
+      <div class="box-wrapper">
+        <div class="box-demo default-box">
+          <div class="content-layer">
+            <strong>CONTENT</strong>
+            <p>Width: 200px</p>
+            <p>Height: 150px</p>
+          </div>
+        </div>
+        <p class="calculation">
+          <strong>Total Width:</strong> 200px (content) + 40px (padding) + 6px (border) = 246px<br>
+          <strong>Total Height:</strong> 150px (content) + 40px (padding) + 6px (border) = 196px
+        </p>
+      </div>
+    </section>
+
+    <!-- Border Box Model -->
+    <section class="demo-section">
+      <h2>Border-Box Model</h2>
+      <p class="description">
+        <strong>box-sizing: border-box</strong><br>
+        Width/height includes content, padding, AND border. More predictable sizing.
+      </p>
+      
+      <div class="box-wrapper">
+        <div class="box-demo border-box">
+          <div class="content-layer">
+            <strong>CONTENT</strong>
+            <p>Width: 200px</p>
+            <p>Height: 150px</p>
+          </div>
+        </div>
+        <p class="calculation">
+          <strong>Total Width:</strong> 200px (includes everything)<br>
+          <strong>Total Height:</strong> 150px (includes everything)<br>
+          <em>Content area shrinks to fit padding and border inside the specified dimensions.</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- Detailed Box Model Layers -->
+    <section class="demo-section layers-section">
+      <h2>Box Model Layers Visualization</h2>
+      <p class="description">Each layer builds upon the previous one</p>
+      
+      <div class="layers-container">
+        <div class="layer-box margin-layer">
+          <div class="layer-label">MARGIN (transparent)</div>
+          <div class="layer-box border-layer">
+            <div class="layer-label">BORDER</div>
+            <div class="layer-box padding-layer">
+              <div class="layer-label">PADDING</div>
+              <div class="layer-box content-layer-visual">
+                <div class="layer-label">CONTENT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explanation">
+        <ul>
+          <li><strong>Content:</strong> The actual content (text, images, etc.)</li>
+          <li><strong>Padding:</strong> Space between content and border (inside the element)</li>
+          <li><strong>Border:</strong> The border surrounding the padding and content</li>
+          <li><strong>Margin:</strong> Space outside the border (separates from other elements)</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Assignment 07 - Question 8 | Box Model Exploration</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,271 @@
+/* Assignment 07 - Q8 - Box Model Exploration */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+/* Header styling */
+header {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #ecf0f1;
+}
+
+/* Main container: Flexbox for centering */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Demo section styling */
+.demo-section {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.demo-section h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.description {
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.description strong {
+  color: #e74c3c;
+}
+
+/* Box wrapper for demo boxes */
+.box-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Base box demo styling */
+.box-demo {
+  position: relative;
+  background-color: #3498db; /* Border color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Content layer styling */
+.content-layer {
+  background-color: #e8f4f8;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.content-layer strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #e74c3c;
+}
+
+.content-layer p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+/* Default box model (content-box) */
+.default-box {
+  box-sizing: content-box; /* Default behavior */
+  width: 200px;
+  height: 150px;
+  padding: 20px;
+  border: 3px solid #3498db;
+}
+
+.default-box .content-layer {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #e74c3c;
+  padding: 1rem;
+}
+
+/* Border-box model */
+.border-box {
+  box-sizing: border-box; /* Width includes padding and border */
+  width: 200px;
+  height: 150px;
+  padding: 20px;
+  border: 3px solid #2ecc71;
+  background-color: #2ecc71;
+}
+
+.border-box .content-layer {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #27ae60;
+  padding: 0.5rem;
+}
+
+/* Calculation explanation */
+.calculation {
+  background-color: #ecf0f1;
+  padding: 1rem;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #2c3e50;
+  line-height: 1.8;
+}
+
+.calculation strong {
+  color: #e74c3c;
+}
+
+.calculation em {
+  color: #16a085;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Layers visualization section */
+.layers-section {
+  text-align: center;
+}
+
+.layers-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+/* Nested box layers */
+.layer-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.margin-layer {
+  background-color: transparent;
+  border: 3px dashed #95a5a6;
+  padding: 30px;
+}
+
+.border-layer {
+  background-color: #3498db;
+  padding: 20px;
+  border: 4px solid #2980b9;
+}
+
+.padding-layer {
+  background-color: #2ecc71;
+  padding: 25px;
+}
+
+.content-layer-visual {
+  background-color: #e74c3c;
+  padding: 30px 50px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.layer-label {
+  position: absolute;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  top: 5px;
+  left: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+}
+
+.margin-layer .layer-label {
+  color: #95a5a6;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-shadow: none;
+}
+
+/* Explanation list */
+.explanation {
+  text-align: left;
+  margin-top: 2rem;
+  background-color: #ecf0f1;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.explanation ul {
+  list-style: none;
+}
+
+.explanation li {
+  margin-bottom: 0.8rem;
+  color: #2c3e50;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.explanation li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: #3498db;
+}
+
+.explanation strong {
+  color: #e74c3c;
+}
+
+/* Footer styling */
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .demo-section {
+    padding: 1.5rem;
+  }
+
+  .layers-container {
+    transform: scale(0.8);
+  }
+}

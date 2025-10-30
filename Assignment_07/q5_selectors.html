@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+  Assignment 07 - Q5
+  Advanced CSS Selectors Demonstration
+  Attribute selectors, pseudo-classes, pseudo-elements, and combinators
+  Fully commented CSS explaining each selector type
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q5 - Advanced CSS Selectors</title>
+  <link rel="stylesheet" href="q5_selectors.css">
+</head>
+<body>
+  <header>
+    <h1>Advanced CSS Selectors Demo</h1>
+    <p>Exploring attribute selectors, pseudo-classes, pseudo-elements, and combinators</p>
+  </header>
+
+  <main>
+    <!-- Section 1: Attribute Selectors -->
+    <section class="selector-section">
+      <h2>Attribute Selectors</h2>
+      
+      <div class="example-box">
+        <h3>Form Inputs</h3>
+        <input type="text" placeholder="Text input">
+        <input type="email" placeholder="Email input">
+        <input type="password" placeholder="Password input">
+      </div>
+
+      <div class="example-box">
+        <h3>External Links</h3>
+        <a href="https://example.com">External HTTPS Link</a>
+        <a href="http://example.com">External HTTP Link</a>
+        <a href="#internal">Internal Link</a>
+        <a href="document.pdf" download>Download PDF</a>
+      </div>
+    </section>
+
+    <!-- Section 2: Pseudo-classes -->
+    <section class="selector-section">
+      <h2>Pseudo-classes</h2>
+      
+      <div class="example-box">
+        <h3>:hover, :focus, :active</h3>
+        <button>Hover Me</button>
+        <input type="text" placeholder="Focus on me">
+      </div>
+
+      <div class="example-box">
+        <h3>:nth-child() Examples</h3>
+        <ul class="demo-list">
+          <li>First item</li>
+          <li>Second item</li>
+          <li>Third item</li>
+          <li>Fourth item</li>
+          <li>Fifth item</li>
+          <li>Sixth item</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 3: Pseudo-elements -->
+    <section class="selector-section">
+      <h2>Pseudo-elements</h2>
+      
+      <div class="example-box">
+        <p class="decorated-text">This paragraph uses ::before and ::after pseudo-elements to add decorative content.</p>
+        <p class="quote-text">A quote with special styling using pseudo-elements.</p>
+      </div>
+    </section>
+
+    <!-- Section 4: Combinators -->
+    <section class="selector-section">
+      <h2>Combinators</h2>
+      
+      <div class="example-box combinator-demo">
+        <h3>Child Combinator (>)</h3>
+        <div class="parent">
+          <p>Direct child paragraph</p>
+          <div>
+            <p>Nested paragraph (not direct child)</p>
+          </div>
+        </div>
+
+        <h3>Adjacent Sibling (+)</h3>
+        <div class="sibling-demo">
+          <h4>Heading</h4>
+          <p>Immediately follows h4</p>
+          <p>Another paragraph</p>
+        </div>
+
+        <h3>General Sibling (~)</h3>
+        <div class="general-sibling">
+          <h4>Title</h4>
+          <p>First sibling paragraph</p>
+          <span>Some span</span>
+          <p>Second sibling paragraph</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Assignment 07 - Question 5 | Advanced CSS Selectors</p>
+  </footer>
+</body>
+</html>

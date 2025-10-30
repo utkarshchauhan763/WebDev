@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  Assignment 07 - Q3
+  Gradient Background Webpage
+  Linear gradient and radial gradient sections
+  Fixed header/footer, parallax effect with background-attachment: fixed
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q3 - Gradient Backgrounds</title>
+  <link rel="stylesheet" href="q3_gradients.css">
+</head>
+<body>
+  <header>
+    <h1>Gradient Background Demonstration</h1>
+    <p>Exploring Linear and Radial Gradients with CSS</p>
+  </header>
+
+  <main>
+    <!-- Linear Gradient Section -->
+    <section class="linear-gradient">
+      <div class="content">
+        <h2>Linear Gradient Background</h2>
+        <p>This section uses a linear gradient that transitions smoothly from one color to another in a straight line.</p>
+        <p><strong>CSS Property:</strong> <code>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</code></p>
+        <p>Linear gradients can be customized with different angles, multiple color stops, and opacity values to create stunning visual effects.</p>
+      </div>
+    </section>
+
+    <!-- Radial Gradient Section with Parallax Effect -->
+    <section class="radial-gradient">
+      <div class="content">
+        <h2>Radial Gradient Background</h2>
+        <p>This section features a radial gradient that radiates from a central point outward in a circular or elliptical pattern.</p>
+        <p><strong>CSS Property:</strong> <code>background: radial-gradient(circle, #f093fb 0%, #f5576c 100%);</code></p>
+        <p><strong>Parallax Effect:</strong> This section uses <code>background-attachment: fixed;</code> to create a parallax-like scrolling effect.</p>
+        <p>Radial gradients are perfect for creating spotlight effects, vignettes, and eye-catching backgrounds.</p>
+      </div>
+    </section>
+
+    <!-- Additional Content Section -->
+    <section class="info-section">
+      <div class="content">
+        <h2>Gradient Applications</h2>
+        <p>CSS gradients are powerful tools for modern web design. They can be used for:</p>
+        <ul>
+          <li>Background colors with smooth transitions</li>
+          <li>Creating depth and dimension</li>
+          <li>Button and card styling</li>
+          <li>Overlays and masking effects</li>
+          <li>Text backgrounds with background-clip</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Assignment 07 - Question 3 | Gradient Backgrounds</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,286 @@
+/* Assignment 07 - Q5 - Advanced CSS Selectors */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.selector-section {
+  background-color: #fff;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.selector-section h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.example-box {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #ecf0f1;
+  border-radius: 8px;
+}
+
+.example-box h3 {
+  color: #34495e;
+  margin-bottom: 1rem;
+}
+
+/* ===== ATTRIBUTE SELECTORS ===== */
+
+/* Targets input elements with type="text" */
+input[type="text"] {
+  background-color: #e8f5e9;
+  border: 2px solid #4caf50;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Targets input elements with type="email" */
+input[type="email"] {
+  background-color: #fff3e0;
+  border: 2px solid #ff9800;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Targets input elements with type="password" */
+input[type="password"] {
+  background-color: #ffebee;
+  border: 2px solid #f44336;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Targets links that start with "https" */
+a[href^="https"] {
+  color: #4caf50;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.3rem 0.5rem;
+  display: inline-block;
+  margin: 0.3rem;
+}
+
+/* Targets links that start with "http" (but not https) */
+a[href^="http"]:not([href^="https"]) {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+/* Targets links with download attribute */
+a[download] {
+  background-color: #2196f3;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* ===== PSEUDO-CLASSES ===== */
+
+/* :hover - Changes appearance when mouse hovers over button */
+button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: scale(1.1);
+}
+
+/* :active - Changes appearance when button is clicked */
+button:active {
+  transform: scale(0.95);
+}
+
+/* :focus - Changes appearance when input receives focus */
+input:focus {
+  outline: 3px solid #9b59b6;
+  outline-offset: 2px;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* :nth-child() - Selects specific children */
+.demo-list {
+  list-style: none;
+}
+
+/* First child */
+.demo-list li:nth-child(1) {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 0.5rem;
+  margin: 0.3rem 0;
+  border-radius: 5px;
+}
+
+/* Even children */
+.demo-list li:nth-child(even) {
+  background-color: #3498db;
+  color: #fff;
+  padding: 0.5rem;
+  margin: 0.3rem 0;
+  border-radius: 5px;
+}
+
+/* Odd children */
+.demo-list li:nth-child(odd):not(:first-child) {
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 0.5rem;
+  margin: 0.3rem 0;
+  border-radius: 5px;
+}
+
+/* ===== PSEUDO-ELEMENTS ===== */
+
+/* ::before - Adds content before element */
+.decorated-text::before {
+  content: "★ ";
+  color: #f39c12;
+  font-size: 1.5rem;
+}
+
+/* ::after - Adds content after element */
+.decorated-text::after {
+  content: " ★";
+  color: #f39c12;
+  font-size: 1.5rem;
+}
+
+.decorated-text {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin: 1rem 0;
+}
+
+/* Using ::before and ::after for quote marks */
+.quote-text {
+  font-style: italic;
+  color: #34495e;
+  position: relative;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 1rem 0;
+}
+
+.quote-text::before {
+  content: "\201C";
+  font-size: 3rem;
+  color: #3498db;
+  position: absolute;
+  left: 0;
+  top: -10px;
+}
+
+.quote-text::after {
+  content: "\201D";
+  font-size: 3rem;
+  color: #3498db;
+  position: absolute;
+  right: 10px;
+  bottom: -20px;
+}
+
+/* ===== COMBINATORS ===== */
+
+/* Child combinator (>) - Selects direct children only */
+.parent > p {
+  background-color: #3498db;
+  color: #fff;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+}
+
+/* Adjacent sibling (+) - Selects element immediately after h4 */
+.sibling-demo h4 + p {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+}
+
+/* General sibling (~) - Selects all p siblings after h4 */
+.general-sibling h4 ~ p {
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+}
+
+/* Descendant selector (space) - Selects all p inside .combinator-demo */
+.combinator-demo p {
+  font-size: 1rem;
+}
+
+.combinator-demo h3,
+.combinator-demo h4 {
+  color: #2c3e50;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
+  .selector-section {
+    padding: 1rem;
+  }
+}

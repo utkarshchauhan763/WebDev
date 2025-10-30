@@ -1,0 +1,227 @@
+/* Assignment 07 - Q9 - Outline and Focus Styling Form */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header styling */
+header {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #ecf0f1;
+  font-size: 0.95rem;
+}
+
+/* Main container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  flex: 1;
+}
+
+/* Form styling */
+.demo-form {
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+}
+
+.demo-form h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.form-description {
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+/* Form group spacing */
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
+.form-group label {
+  display: block;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.hint {
+  display: block;
+  font-size: 0.8rem;
+  color: #95a5a6;
+  margin-top: 0.3rem;
+  font-style: italic;
+}
+
+/* Base input styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ecf0f1;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+/* Remove default outline and add custom on focus */
+input:focus,
+select:focus,
+textarea:focus {
+  background-color: #fff;
+  border-color: #3498db;
+}
+
+/* Solid outline on focus */
+.solid-outline:focus {
+  outline: 3px solid #e74c3c;
+  outline-offset: 2px;
+}
+
+/* Dashed outline on focus */
+.dashed-outline:focus {
+  outline: 3px dashed #f39c12;
+  outline-offset: 3px;
+}
+
+/* Dotted outline on focus */
+.dotted-outline:focus {
+  outline: 4px dotted #9b59b6;
+  outline-offset: 4px;
+}
+
+/* Double outline on focus */
+.double-outline:focus {
+  outline: 5px double #16a085;
+  outline-offset: 2px;
+}
+
+/* Groove outline on focus */
+.groove-outline:focus {
+  outline: 4px groove #3498db;
+  outline-offset: 3px;
+}
+
+/* Ridge outline on focus */
+.ridge-outline:focus {
+  outline: 4px ridge #2ecc71;
+  outline-offset: 2px;
+}
+
+/* Textarea specific styling */
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Select dropdown styling */
+select {
+  cursor: pointer;
+}
+
+/* Checkbox group */
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.checkbox-outline {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  accent-color: #3498db;
+}
+
+.checkbox-outline:focus {
+  outline: 3px solid #e91e63;
+  outline-offset: 3px;
+}
+
+/* Submit button styling */
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:focus {
+  outline: 3px solid #f39c12;
+  outline-offset: 3px;
+}
+
+/* Footer styling */
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .demo-form {
+    padding: 2rem;
+  }
+
+  .demo-form h2 {
+    font-size: 1.6rem;
+  }
+}

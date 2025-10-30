@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+  Assignment 07 - Q2
+  Height and Width Practice Layout
+  Three boxes with varying dimensions using px, %, vh, em
+  Demonstrates min-height, max-width, overflow properties
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q2 - Height and Width Practice</title>
+  <link rel="stylesheet" href="q2_dimensions.css">
+</head>
+<body>
+  <header>
+    <h1>Height and Width Practice Layout</h1>
+    <p>Demonstrating various CSS units and dimension properties</p>
+  </header>
+
+  <main class="container">
+    <div class="box box-px">
+      <h3>Fixed Pixels</h3>
+      <p><strong>width:</strong> 300px</p>
+      <p><strong>height:</strong> 200px</p>
+      <p>This box uses pixel units for precise control.</p>
+    </div>
+
+    <div class="box box-percent">
+      <h3>Percentage & Min-Height</h3>
+      <p><strong>width:</strong> 40%</p>
+      <p><strong>min-height:</strong> 250px</p>
+      <p><strong>max-width:</strong> 400px</p>
+      <p>This box adapts to its container width but has minimum height and maximum width constraints.</p>
+    </div>
+
+    <div class="box box-viewport">
+      <h3>Viewport & Em Units</h3>
+      <p><strong>width:</strong> 25em</p>
+      <p><strong>height:</strong> 30vh</p>
+      <p><strong>overflow:</strong> auto</p>
+      <p>This box uses viewport height and em units. If content exceeds the height, scrollbars appear. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Assignment 07 - Question 2 | Height & Width Demo</p>
+  </footer>
+</body>
+</html>
