@@ -1,0 +1,88 @@
+/* Assignment 06 - Q3 - Flexbox Homepage */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header: nav links spaced evenly */
+header {
+  background-color: #2c3e50;
+  padding: 1.5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav a:hover {
+  color: #3498db;
+}
+
+/* Main: three boxes horizontally aligned */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  background-color: #ecf0f1;
+}
+
+.box {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.box h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* Hover effect: slight rotation */
+.box:hover {
+  transform: rotate(2deg);
+}
+
+/* Footer: full width, centered text */
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

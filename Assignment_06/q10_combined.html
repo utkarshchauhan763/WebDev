@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  Assignment 06 - Q10
+  Combined Flexbox + Grid layout
+  Header: Flexbox (logo left, nav right)
+  Main: Grid 2-col (article with 3 Flexbox boxes + sidebar)
+  Footer: full-width
+  One element has keyframes animation
+  Single column on mobile
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q10 - Combined Layout</title>
+  <link rel="stylesheet" href="q10_combined.css">
+</head>
+<body>
+  <header>
+    <div class="logo">MyWebsite</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main-grid">
+    <article class="article-section">
+      <h2 class="animated-title">Our Services</h2>
+      <div class="flex-boxes">
+        <div class="box">
+          <h3>Design</h3>
+          <p>Creative and modern designs.</p>
+        </div>
+        <div class="box">
+          <h3>Development</h3>
+          <p>Robust and scalable code.</p>
+        </div>
+        <div class="box">
+          <h3>Marketing</h3>
+          <p>Effective digital strategies.</p>
+        </div>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MyWebsite | All Rights Reserved</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+/* Assignment 06 - Q1 - Flexbox Portfolio */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header: name left, nav links right using Flexbox */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+  color: #fff;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #ffa500;
+}
+
+/* Main: two sections side-by-side using Flexbox */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.about {
+  flex: 1;
+  max-width: 500px;
+}
+
+.image-section {
+  flex: 1;
+  max-width: 400px;
+}
+
+.image-section img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Footer: centered text */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
+
+/* Responsive: stack vertically below 700px */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  main {
+    flex-direction: column;
+  }
+}

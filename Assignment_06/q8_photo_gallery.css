@@ -1,0 +1,62 @@
+/* Assignment 06 - Q8 - Photo Gallery */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+/* Grid gallery with auto-fit and minmax */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+figure {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
+}
+
+figure img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+figcaption {
+  padding: 1rem;
+  text-align: center;
+  color: #34495e;
+  font-weight: bold;
+}
+
+/* Hover effect: scale image */
+figure:hover img {
+  transform: scale(1.1);
+}
+
+figure:hover {
+  transform: translateY(-5px);
+}

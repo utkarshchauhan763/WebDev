@@ -1,0 +1,130 @@
+/* Assignment 06 - Q5 - Flexbox Pricing */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+/* Flexbox container for pricing cards */
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Pricing card */
+.card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  flex: 1;
+  max-width: 300px;
+  min-width: 250px;
+  transition: transform 0.3s ease;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Middle card highlighted and slightly larger */
+.card.featured {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.card ul {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.card ul li {
+  margin-bottom: 0.5rem;
+}
+
+.card button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #667eea;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card button:hover {
+  background-color: #5568d3;
+}
+
+.card.featured button {
+  background-color: #fff;
+  color: #f5576c;
+}
+
+/* Hover effect: rise up */
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card.featured:hover {
+  transform: scale(1.1) translateY(-10px);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive: stack vertically below 750px */
+@media (max-width: 750px) {
+  .pricing-container {
+    flex-direction: column;
+  }
+
+  .card.featured {
+    transform: scale(1);
+  }
+
+  .card.featured:hover {
+    transform: translateY(-10px);
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+  Assignment 06 - Q4
+  Dashboard layout using CSS Grid
+  Header, sidebar, main content with 2x2 boxes (one spans 2 cols)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q4 - Grid Dashboard</title>
+  <link rel="stylesheet" href="q4_dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Dashboard</h1>
+    </header>
+
+    <aside class="sidebar">
+      <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#reports">Reports</a>
+        <a href="#settings">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="box box-wide">
+        <h2>Overview</h2>
+        <p>This box spans two columns.</p>
+      </div>
+      <div class="box">
+        <h2>Stats</h2>
+        <p>View statistics here.</p>
+      </div>
+      <div class="box">
+        <h2>Activity</h2>
+        <p>Recent activity logs.</p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
