@@ -1,0 +1,31 @@
+/* Assignment 09 - Q1 - Responsive Image Filter Gallery */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;background:#f4f7fb;color:#222}
+header{background:#34495e;color:#fff;padding:1.5rem;text-align:center}
+header p{opacity:.9;font-size:.95rem}
+
+/* Grid gallery: auto-fit with minmax(200px, 1fr) */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;padding:2rem;max-width:1200px;margin:0 auto}
+
+.img-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .3s ease}
+.img-card:hover{transform:translateY(-5px)}
+
+img{display:block;width:100%;height:200px;object-fit:cover;transition:filter .4s ease}
+
+/* Individual filters */
+.blur-filter{filter:blur(5px)}
+.grayscale-filter{filter:grayscale(100%)}
+.sepia-filter{filter:sepia(100%)}
+.brightness-filter{filter:brightness(0.6)}
+.contrast-filter{filter:contrast(1.8)}
+.hue-filter{filter:hue-rotate(120deg)}
+
+/* Remove filter on hover */
+.img-card:hover img{filter:none !important}
+
+figcaption{padding:.75rem;text-align:center;background:#fff;color:#2c3e50;font-weight:500}
+
+footer{background:#34495e;color:#fff;text-align:center;padding:1rem;margin-top:2rem}
+
+/* Single column below 600px */
+@media(max-width:600px){.gallery{grid-template-columns:1fr;gap:1rem;padding:1rem}}

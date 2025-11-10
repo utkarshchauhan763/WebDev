@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+  Assignment 09 - Q6
+  Responsive CSS Cheat Sheet
+  Grid layout with key CSS concepts, responsive to 700px breakpoint
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Q6 - Responsive CSS Cheat Sheet</title>
+  <link rel="stylesheet" href="responsive_css_cheatsheet.css">
+</head>
+<body>
+  <header>
+    <h1>Responsive CSS Cheat Sheet</h1>
+  </header>
+
+  <main class="cheatsheet">
+    <div class="concept-box">
+      <h2>CSS Filters</h2>
+      <code>filter: blur(5px);<br>filter: grayscale(100%);<br>filter: brightness(1.2);</code>
+    </div>
+
+    <div class="concept-box">
+      <h2>Media Queries</h2>
+      <code>@media (max-width: 768px) {<br>&nbsp;&nbsp;/* styles */<br>}</code>
+    </div>
+
+    <div class="concept-box">
+      <h2>Flexbox Basics</h2>
+      <code>display: flex;<br>justify-content: center;<br>flex-wrap: wrap;</code>
+    </div>
+
+    <div class="concept-box">
+      <h2>Grid Layout</h2>
+      <code>display: grid;<br>grid-template-columns: repeat(3, 1fr);<br>gap: 1rem;</code>
+    </div>
+
+    <div class="concept-box">
+      <h2>Responsive Typography</h2>
+      <code>font-size: clamp(1rem, 2vw, 1.5rem);<br>line-height: 1.6;</code>
+    </div>
+
+    <div class="concept-box">
+      <h2>Transitions & Transforms</h2>
+      <code>transition: all .3s ease;<br>transform: scale(1.1);</code>
+    </div>
+  </main>
+
+  <footer>
+    <p>Assignment 09 — Q6</p>
+  </footer>
+</body>
+</html>

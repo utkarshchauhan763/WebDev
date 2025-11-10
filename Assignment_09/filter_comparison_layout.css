@@ -1,0 +1,32 @@
+/* Assignment 09 - Q8 - Filter Comparison Layout */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;background:#f4f7fb;display:flex;flex-direction:column;min-height:100vh}
+header{background:#34495e;color:#fff;padding:1.5rem;text-align:center}
+header p{opacity:.9}
+
+/* Comparison section: side-by-side on desktop */
+.comparison{display:flex;gap:2rem;justify-content:center;align-items:center;padding:2rem;flex:1;flex-wrap:wrap}
+
+.img-container{position:relative;background:#fff;border-radius:8px;padding:1rem;box-shadow:0 4px 12px rgba(0,0,0,.1);text-align:center;transition:transform .3s ease}
+.img-container:hover{transform:translateY(-5px)}
+
+img{width:300px;height:300px;border-radius:6px;object-fit:cover;display:block;transition:filter .4s ease}
+
+/* Original image: no filter */
+.original{filter:none}
+
+/* Filtered image: has brightness filter */
+.filtered{filter:brightness(0.7)}
+
+/* Remove filter on hover */
+.img-container:hover .filtered{filter:none}
+
+figcaption{margin-top:.75rem;color:#666;font-size:.95rem;font-weight:500}
+
+footer{background:#34495e;color:#fff;text-align:center;padding:1rem;margin-top:auto}
+
+/* Stack vertically below 700px */
+@media(max-width:700px){
+  .comparison{flex-direction:column;gap:1.5rem;padding:1rem}
+  img{width:250px;height:250px}
+}

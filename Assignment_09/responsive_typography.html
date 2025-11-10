@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+  Assignment 09 - Q4
+  Responsive Typography
+  Font sizes using clamp() function for fluid scaling
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Q4 - Responsive Typography</title>
+  <link rel="stylesheet" href="responsive_typography.css">
+</head>
+<body>
+  <header>
+    <h1>Responsive Typography Demo</h1>
+  </header>
+
+  <main class="content">
+    <section>
+      <h2>Fluid Font Sizing with clamp()</h2>
+      <p>
+        The clamp() function allows font sizes to scale automatically between a minimum and maximum value based on viewport width. This ensures typography is always readable and properly scaled for any screen size.
+      </p>
+      <p>
+        Use: <code>h1 { font-size: clamp(1.5rem, 4vw, 3rem); }</code>
+        and <code>p { font-size: clamp(1rem, 2vw, 1.5rem); }</code>
+      </p>
+      <p>
+        This approach eliminates the need for multiple media queries while maintaining visual hierarchy across all devices. Text automatically adjusts without hard breakpoints, creating a seamless responsive experience.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Assignment 09 — Q4</p>
+  </footer>
+</body>
+</html>

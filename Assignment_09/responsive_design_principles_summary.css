@@ -1,0 +1,22 @@
+/* Assignment 09 - Q9 - Responsive Design Principles Summary */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;background:#f4f7fb;display:flex;flex-direction:column;min-height:100vh}
+header{background:#34495e;color:#fff;padding:1.5rem;text-align:center}
+
+/* 3-column grid on desktop */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding:2rem;max-width:1200px;margin:0 auto;width:100%;flex:1}
+
+.principle-box{background:#fff;padding:1.5rem;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:all .3s ease;cursor:pointer}
+.principle-box:hover{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;transform:scale(1.05);box-shadow:0 6px 18px rgba(0,0,0,.15)}
+
+.principle-box h2{font-size:1.2rem;margin-bottom:.75rem;color:inherit}
+.principle-box p{line-height:1.6;margin-bottom:1rem;color:inherit}
+.principle-box code{background:#ecf0f1;padding:.5rem;border-radius:4px;display:block;font-family:Courier,monospace;font-size:.85rem;line-height:1.4;color:#c0392b}
+.principle-box:hover code{background:rgba(255,255,255,.2);color:#fff}
+
+footer{background:#34495e;color:#fff;text-align:center;padding:1rem;margin-top:auto}
+
+/* Single column below 600px */
+@media(max-width:600px){
+  .principles{grid-template-columns:1fr;gap:1rem;padding:1rem}
+}
