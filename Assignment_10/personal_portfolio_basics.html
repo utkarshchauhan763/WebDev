@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+  Assignment 10 - Q2
+  Personal Portfolio Basics (Bootstrap Utilities)
+  Margin, padding, text, background classes
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q2 - Personal Portfolio | Bootstrap</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="personal_portfolio_basics.css">
+</head>
+<body>
+  <!-- Header using Bootstrap utilities -->
+  <header class="bg-dark text-white py-5 text-center">
+    <div class="container">
+      <h1 class="display-3 fw-bold mb-2">John Developer</h1>
+      <p class="lead text-muted">Full-Stack Web Developer & Designer</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-5">
+    <div class="container">
+      <!-- Profile Section with Utilities -->
+      <section class="text-center mb-5">
+        <!-- Profile image using .img-fluid and .rounded-circle -->
+        <img src="https://via.placeholder.com/150x150/667eea/fff?text=Profile" 
+             alt="Profile Picture" 
+             class="img-fluid rounded-circle mb-4"
+             style="max-width: 150px;">
+        
+        <!-- About text with Bootstrap utilities -->
+        <p class="lead text-dark fw-bold mb-3">About Me</p>
+        <p class="text-muted mx-auto" style="max-width: 600px;">
+          Passionate about building beautiful, responsive websites. Experienced in HTML, CSS, JavaScript, and modern frameworks. 
+          Let's create something amazing together!
+        </p>
+      </section>
+
+      <!-- Buttons Section -->
+      <section class="text-center mb-5">
+        <div class="row justify-content-center gap-3">
+          <!-- Bootstrap button utilities -->
+          <div class="col-auto">
+            <button class="btn btn-primary btn-lg fw-bold">Hire Me</button>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-outline-secondary btn-lg fw-bold">Download CV</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Form Section -->
+      <section class="bg-light p-5 rounded mb-5">
+        <h3 class="text-center mb-4 fw-bold">Get In Touch</h3>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <!-- Form with Bootstrap .form-control -->
+            <form>
+              <!-- Form group with margin utilities -->
+              <div class="mb-3">
+                <label for="name" class="form-label fw-bold">Your Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label fw-bold">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="message" class="form-label fw-bold">Message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Your message..." required></textarea>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary w-100 fw-bold">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section with Bootstrap utilities -->
+      <section class="mb-5">
+        <h3 class="text-center fw-bold mb-4">Skills</h3>
+        <div class="row text-center">
+          <div class="col-md-4 mb-3">
+            <div class="bg-primary text-white p-4 rounded">
+              <h5 class="fw-bold">Frontend</h5>
+              <p>HTML, CSS, JavaScript, React</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bg-success text-white p-4 rounded">
+              <h5 class="fw-bold">Backend</h5>
+              <p>Node.js, Express, MongoDB</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bg-info text-white p-4 rounded">
+              <h5 class="fw-bold">Tools</h5>
+              <p>Git, Bootstrap, Webpack</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer with Bootstrap utilities -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 John Developer. All rights reserved. | Assignment 10 — Q2</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

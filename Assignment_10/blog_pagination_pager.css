@@ -1,0 +1,139 @@
+/* Assignment 10 - Q9 - Blog Pagination & Pager */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Header styling */
+header {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+/* Blog Post Cards */
+.blog-post-card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.blog-post-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.blog-post-card img {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.blog-post-card:hover img {
+  transform: scale(1.05);
+}
+
+.blog-post-card .btn-primary {
+  background-color: #667eea;
+  border-color: #667eea;
+  transition: all 0.3s ease;
+}
+
+.blog-post-card .btn-primary:hover {
+  background-color: #764ba2;
+  border-color: #764ba2;
+}
+
+/* Pagination Component Styling */
+.pagination {
+  gap: 0.5rem;
+  margin-bottom: 0;
+}
+
+.page-link {
+  border-radius: 6px;
+  color: #667eea;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.page-link:hover {
+  background-color: #667eea;
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+.page-item.active .page-link {
+  background-color: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+/* Pager Section */
+.pager-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.btn-outline-secondary {
+  color: #667eea;
+  border-color: #667eea;
+  border-width: 2px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #667eea;
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+/* Section styling */
+section {
+  margin-bottom: 2rem;
+}
+
+section h3,
+section h4 {
+  color: #2c3e50;
+}
+
+/* Info section */
+.bg-light {
+  background-color: #ecf0f1 !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .page-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .col-md-5 {
+    width: 100%;
+  }
+
+  .btn-outline-secondary {
+    margin-bottom: 0.5rem;
+  }
+
+  .row.g-3 {
+    gap: 1rem !important;
+  }
+}

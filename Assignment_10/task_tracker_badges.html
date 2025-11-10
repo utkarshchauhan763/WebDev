@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+  Assignment 10 - Q7
+  Task Tracker with Badges
+  List group, badges for priority, badge counter in header
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q7 - Task Tracker | Bootstrap</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="task_tracker_badges.css">
+</head>
+<body>
+  <!-- Header with Badge Counter -->
+  <header class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1>Task Manager</h1>
+        <!-- Badge counter showing total pending tasks -->
+        <div class="badge bg-danger fs-6 p-2">
+          <span>6 Pending Tasks</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-5">
+    <div class="container">
+      <!-- Tasks Section -->
+      <section class="mb-5">
+        <h2 class="fw-bold mb-4">Active Tasks</h2>
+
+        <!-- Tasks using Bootstrap List Group -->
+        <ul class="list-group list-group-flush">
+          <!-- Task 1 - High Priority -->
+          <li class="list-group-item task-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="flex-grow-1">
+                <span class="badge bg-danger me-2">High</span>
+                <strong>Complete project proposal</strong>
+                <p class="text-muted small mb-0 mt-1">Due: Nov 12, 2025</p>
+              </div>
+              <button class="btn btn-sm btn-success">✓ Complete</button>
+            </div>
+          </li>
+
+          <!-- Task 2 - High Priority -->
+          <li class="list-group-item task-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="flex-grow-1">
+                <span class="badge bg-danger me-2">High</span>
+                <strong>Review code changes</strong>
+                <p class="text-muted small mb-0 mt-1">Due: Nov 11, 2025</p>
+              </div>
+              <button class="btn btn-sm btn-success">✓ Complete</button>
+            </div>
+          </li>
+
+          <!-- Task 3 - Medium Priority -->
+          <li class="list-group-item task-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="flex-grow-1">
+                <span class="badge bg-warning text-dark me-2">Medium</span>
+                <strong>Update documentation</strong>
+                <p class="text-muted small mb-0 mt-1">Due: Nov 13, 2025</p>
+              </div>
+              <button class="btn btn-sm btn-success">✓ Complete</button>
+            </div>
+          </li>
+
+          <!-- Task 4 - Medium Priority -->
+          <li class="list-group-item task-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="flex-grow-1">
+                <span class="badge bg-warning text-dark me-2">Medium</span>
+                <strong>Schedule team meeting</strong>
+                <p class="text-muted small mb-0 mt-1">Due: Nov 14, 2025</p>
+              </div>
+              <button class="btn btn-sm btn-success">✓ Complete</button>
+            </div>
+          </li>
+
+          <!-- Task 5 - Low Priority -->
+          <li class="list-group-item task-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="flex-grow-1">
+                <span class="badge bg-info me-2">Low</span>
+                <strong>Organize project files</strong>
+                <p class="text-muted small mb-0 mt-1">Due: Nov 15, 2025</p>
+              </div>
+              <button class="btn btn-sm btn-success">✓ Complete</button>
+            </div>
+          </li>
+
+          <!-- Task 6 - Low Priority -->
+          <li class="list-group-item task-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="flex-grow-1">
+                <span class="badge bg-info me-2">Low</span>
+                <strong>Send weekly report</strong>
+                <p class="text-muted small mb-0 mt-1">Due: Nov 16, 2025</p>
+              </div>
+              <button class="btn btn-sm btn-success">✓ Complete</button>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Completed Tasks Section -->
+      <section>
+        <h2 class="fw-bold mb-4">
+          Completed Tasks
+          <span class="badge bg-success ms-2">3</span>
+        </h2>
+
+        <!-- Completed tasks list -->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item task-completed">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" class="me-3" checked disabled>
+              <div>
+                <strong class="text-decoration-line-through">Setup project repository</strong>
+                <p class="text-muted small mb-0">Completed on Nov 5, 2025</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item task-completed">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" class="me-3" checked disabled>
+              <div>
+                <strong class="text-decoration-line-through">Create database schema</strong>
+                <p class="text-muted small mb-0">Completed on Nov 8, 2025</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item task-completed">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" class="me-3" checked disabled>
+              <div>
+                <strong class="text-decoration-line-through">Deploy to staging server</strong>
+                <p class="text-muted small mb-0">Completed on Nov 9, 2025</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Task Manager. All rights reserved. | Assignment 10 — Q7</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

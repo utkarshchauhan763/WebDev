@@ -1,0 +1,151 @@
+/* Assignment 10 - Q7 - Task Tracker with Badges */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Header styling */
+header {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin-bottom: 0;
+}
+
+/* Section styling */
+section {
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+/* List group styling */
+.list-group {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.list-group-item {
+  border-bottom: 1px solid #e9ecef;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* Task item styling */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item strong {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+/* Badge styling */
+.badge {
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.bg-danger {
+  background-color: #e74c3c !important;
+}
+
+.badge.bg-warning {
+  background-color: #f39c12 !important;
+}
+
+.badge.bg-info {
+  background-color: #3498db !important;
+}
+
+.badge.bg-success {
+  background-color: #2ecc71 !important;
+}
+
+/* Header badge counter */
+header .badge {
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+}
+
+/* Button styling */
+.btn-success {
+  background-color: #2ecc71;
+  border-color: #2ecc71;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #27ae60;
+  border-color: #27ae60;
+  transform: scale(1.05);
+}
+
+/* Completed task styling */
+.task-completed {
+  background-color: #ecf0f1;
+  opacity: 0.8;
+}
+
+.task-completed strong {
+  color: #95a5a6;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-sm {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  header .d-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  header .badge {
+    align-self: flex-start;
+  }
+}

@@ -1,0 +1,97 @@
+/* Assignment 10 - Q4 - Restaurant Menu Page */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', 'Garamond', serif;
+  background-color: #faf8f3;
+}
+
+/* Header styling */
+header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+/* Figure and image styling */
+figure {
+  margin-bottom: 1.5rem;
+}
+
+.figure-img {
+  transition: transform 0.3s ease;
+}
+
+.figure-img:hover {
+  transform: scale(1.05);
+}
+
+/* Table styling */
+.table {
+  background-color: white;
+  font-size: 0.95rem;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e8e9ff;
+}
+
+/* List group styling */
+.list-group-item {
+  background-color: white;
+  border-color: #e9ecef;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Badge styling */
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Section styling */
+section {
+  margin-bottom: 2rem;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+  border: 2px solid #e9ecef;
+}
+
+/* Typography styling */
+.lead {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+h2 {
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+h5 {
+  color: #2d2d2d;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.85rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+  Assignment 10 - Q6
+  Notifications Dashboard (Alerts & Wells)
+  Success/info/danger alerts, dismissible alert, .card grouping
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q6 - Notifications Dashboard | Bootstrap</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="notifications_dashboard.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-dark text-white py-4">
+    <div class="container">
+      <h1>Notifications Dashboard</h1>
+      <p class="text-muted mb-0">Manage all your alerts in one place</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-5">
+    <div class="container">
+      <!-- Alerts Section -->
+      <section class="mb-5">
+        <h2 class="fw-bold mb-4">Recent Notifications</h2>
+
+        <!-- Success Alert -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>✓ Success!</strong> Your profile has been updated successfully.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <!-- Info Alert -->
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <strong>ℹ️ Tip:</strong> Complete your profile to get personalized recommendations.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <!-- Danger Alert -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>⚠️ Warning:</strong> Your session will expire in 5 minutes.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <!-- Warning Alert (Non-dismissible) -->
+        <div class="alert alert-warning mb-4" role="alert">
+          <strong>⚡ Important:</strong> System maintenance scheduled for Nov 15, 2025 at 2:00 AM.
+        </div>
+      </section>
+
+      <!-- Summary Well Section -->
+      <section class="mb-5">
+        <h2 class="fw-bold mb-4">Summary</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Summary card (well-like) -->
+            <div class="well-section p-4 rounded">
+              <h4 class="fw-bold mb-3">Notification Status</h4>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <span class="badge bg-success">New</span>
+                  <span class="ms-2">3 New Messages</span>
+                </li>
+                <li class="mb-2">
+                  <span class="badge bg-info">Updates</span>
+                  <span class="ms-2">2 System Updates</span>
+                </li>
+                <li>
+                  <span class="badge bg-warning text-dark">Pending</span>
+                  <span class="ms-2">1 Action Required</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <!-- Another summary card -->
+            <div class="well-section p-4 rounded">
+              <h4 class="fw-bold mb-3">Quick Stats</h4>
+              <div class="row text-center">
+                <div class="col-6 mb-3">
+                  <p class="h3 fw-bold text-primary">42</p>
+                  <p class="text-muted">Total Alerts</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <p class="h3 fw-bold text-success">38</p>
+                  <p class="text-muted">Read</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alerts Grouped in Card -->
+      <section>
+        <h2 class="fw-bold mb-4">Alert History</h2>
+        <div class="card">
+          <div class="card-header bg-primary text-white fw-bold">
+            Last 5 Alerts
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="badge bg-success">Read</span>
+              Profile updated successfully - Nov 10, 2025
+            </li>
+            <li class="list-group-item">
+              <span class="badge bg-info">Read</span>
+              New comment on your post - Nov 9, 2025
+            </li>
+            <li class="list-group-item">
+              <span class="badge bg-warning text-dark">Unread</span>
+              Payment received - Nov 8, 2025
+            </li>
+            <li class="list-group-item">
+              <span class="badge bg-danger">Unread</span>
+              Security alert: Login from new device - Nov 7, 2025
+            </li>
+            <li class="list-group-item">
+              <span class="badge bg-secondary">Read</span>
+              Weekly digest email sent - Nov 6, 2025
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Dashboard. All rights reserved. | Assignment 10 — Q6</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

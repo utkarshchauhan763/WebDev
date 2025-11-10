@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+  Assignment 10 - Q4
+  Restaurant Menu Page (Bootstrap CSS Components)
+  Table, list group, image with caption, typography
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q4 - Restaurant Menu | Bootstrap</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="restaurant_menu_page.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-dark text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-2">Today's Menu</h1>
+      <p class="lead text-muted">Enjoy our carefully curated selection</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-5">
+    <div class="container">
+      <!-- Featured Image with Caption -->
+      <section class="mb-5 text-center">
+        <figure class="figure">
+          <img src="https://via.placeholder.com/400x250/e74c3c/fff?text=Chef's+Special" 
+               alt="Today's Special" 
+               class="figure-img img-fluid rounded shadow">
+          <figcaption class="figure-caption fs-6 fw-bold mt-3">
+            Chef's Specialty: Grilled Salmon with Seasonal Vegetables
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- Menu Table using Bootstrap -->
+      <section class="mb-5">
+        <h2 class="text-center fw-bold mb-4">Menu Items</h2>
+        <div class="table-responsive">
+          <!-- Bootstrap table with striped and hover effect -->
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Caesar Salad</td>
+                <td>Appetizers</td>
+                <td>$8.99</td>
+              </tr>
+              <tr>
+                <td>Grilled Salmon</td>
+                <td>Mains</td>
+                <td>$18.99</td>
+              </tr>
+              <tr>
+                <td>Ribeye Steak</td>
+                <td>Mains</td>
+                <td>$24.99</td>
+              </tr>
+              <tr>
+                <td>Pasta Carbonara</td>
+                <td>Mains</td>
+                <td>$14.99</td>
+              </tr>
+              <tr>
+                <td>Chocolate Lava Cake</td>
+                <td>Desserts</td>
+                <td>$7.99</td>
+              </tr>
+              <tr>
+                <td>Fresh Fruit Sorbet</td>
+                <td>Desserts</td>
+                <td>$6.99</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Chef's Specials using List Group -->
+      <section class="mb-5">
+        <h2 class="text-center fw-bold mb-4">Chef's Specials</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <!-- Bootstrap List Group -->
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="badge bg-danger rounded-pill me-2">New</span>
+                Pan-Seared Scallops with Lemon Butter
+              </li>
+              <li class="list-group-item">
+                <span class="badge bg-warning text-dark rounded-pill me-2">Trending</span>
+                Herb-Crusted Lamb Chops
+              </li>
+              <li class="list-group-item">
+                <span class="badge bg-success rounded-pill me-2">Chef's Pick</span>
+                Truffle Risotto with Wild Mushrooms
+              </li>
+              <li class="list-group-item">
+                <span class="badge bg-info rounded-pill me-2">Limited</span>
+                Seasonal Berry Tart
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Beverages Section with Lead Typography -->
+      <section class="bg-light p-5 rounded">
+        <h2 class="text-center fw-bold mb-4">Beverages</h2>
+        <p class="lead text-center text-dark mb-4">
+          Complement your meal with our selection of fine wines, craft beers, and specialty drinks.
+        </p>
+        <div class="row text-center">
+          <div class="col-md-4 mb-3">
+            <h5 class="fw-bold">Wines</h5>
+            <p>Red, White, and Rosé selections</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5 class="fw-bold">Beers</h5>
+            <p>Local craft and imported brews</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5 class="fw-bold">Cocktails</h5>
+            <p>House specials and classics</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 The Gourmet Restaurant. All rights reserved. | Assignment 10 — Q4</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
