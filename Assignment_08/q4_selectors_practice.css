@@ -1,0 +1,38 @@
+/* Assignment 08 - Q4 - Selectors Practice */
+
+/* Element selector: targets all paragraphs */
+p{color:#2c3e50;line-height:1.6}
+
+/* Class selector: .highlight */
+.highlight{background:#fff3cd;padding:.5rem;border-left:4px solid #ffca2c}
+
+/* ID selector: #unique */
+#unique{background:#e8f7ff;padding:.5rem;border-left:4px solid #3498db}
+
+/* Attribute selector: targets inputs with data-role attribute */
+input[data-role]{border:2px dashed #9b59b6;padding:.5rem;border-radius:4px}
+
+/* Attribute selector example for https links */
+a[href^="https"]{color:#16a085;font-weight:700}
+
+a[href^="http"]{color:#e67e22}
+
+/* Combinators */
+/* Child combinator - direct child p of .parent */
+.parent > p{background:#ecf0ff;padding:.5rem;border-radius:4px}
+
+/* Adjacent sibling - p immediately after h4 */
+h4 + p{background:#ffecec;padding:.5rem;border-radius:4px}
+
+/* General sibling - p after h4 anywhere in the same parent */
+h4 ~ p{border-left:3px solid #2ecc71;padding:.5rem;margin-top:.4rem}
+
+/* Layout */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:#f7f9fb;color:#222}
+header{background:#34495e;color:#fff;padding:1.25rem;text-align:center}
+main.content{max-width:1000px;margin:2rem auto;padding:1rem;display:flex;flex-direction:column;gap:1.25rem}
+footer{background:#34495e;color:#fff;padding:1rem;text-align:center;margin-top:2rem}
+
+/* Small screens */
+@media(max-width:700px){main.content{padding:.8rem}}

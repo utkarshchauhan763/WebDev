@@ -1,0 +1,41 @@
+/* Assignment 08 - Q7 - UI Components */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:flex;flex-direction:column}
+header{color:#fff;padding:1.5rem;text-align:center}
+header p{opacity:.9}
+
+.container{display:flex;justify-content:center;align-items:center;padding:2rem;flex:1}
+
+/* Card container - soft background and shadow */
+.card{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 12px 36px rgba(0,0,0,.15);max-width:400px;width:100%}
+.card h2{color:#2c3e50;margin-bottom:1.5rem;font-size:1.4rem}
+
+/* Search bar */
+.search-bar{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.search-input{flex:1;padding:.75rem;border:2px solid #e6eef8;border-radius:8px;font-size:1rem;transition:border-color .25s ease,box-shadow .25s ease}
+.search-input:focus{outline:none;border-color:#667eea;box-shadow:0 4px 12px rgba(102,126,234,.2)}
+
+.search-btn{padding:.75rem 1.5rem;background:#667eea;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;transition:background .25s ease}
+.search-btn:hover{background:#764ba2}
+.search-btn:active{transform:scale(.98)}
+
+/* Dropdown */
+.dropdown-wrapper{margin-bottom:1.5rem}
+.dropdown-wrapper label{display:block;color:#2c3e50;margin-bottom:.5rem;font-weight:600}
+.dropdown{width:100%;padding:.75rem;border:2px solid #e6eef8;border-radius:8px;font-size:1rem;cursor:pointer;transition:border-color .25s ease}
+.dropdown:focus{outline:none;border-color:#667eea}
+
+/* Button group */
+.button-group{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{flex:1;min-width:100px;padding:.75rem;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:all .25s ease}
+
+.btn-primary{background:#667eea;color:#fff}
+.btn-primary:hover{background:#764ba2;transform:translateY(-2px)}
+
+.btn-secondary{background:#ecf0f1;color:#2c3e50;border:2px solid #bdc3c7}
+.btn-secondary:hover{background:#bdc3c7}
+
+.btn-tertiary{background:transparent;color:#667eea;border:2px solid #667eea}
+.btn-tertiary:hover{background:#667eea;color:#fff}
+
+footer{background:#34495e;color:#fff;text-align:center;padding:1rem}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+  Assignment 08 - Q1
+  Pseudo-Classes Demonstration Page
+  Shows :hover, :focus, :active, :nth-child() on links, buttons, and list items
+  Layout uses Flexbox to align examples in a single row
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Q1 - Pseudo-Classes Demo</title>
+  <link rel="stylesheet" href="q1_pseudo_classes.css">
+</head>
+<body>
+  <header>
+    <h1>Pseudo-Classes Demonstration</h1>
+    <p>Examples of <code>:hover</code>, <code>:focus</code>, <code>:active</code>, and <code>:nth-child()</code></p>
+  </header>
+
+  <main class="examples-row">
+    <section class="example">
+      <h2>Links (:hover)</h2>
+      <p class="explain">Hover a link to change its background and color.</p>
+      <a href="#" class="link-sample">Hover me</a>
+      <a href="#" class="link-sample">Hover me too</a>
+    </section>
+
+    <section class="example">
+      <h2>Buttons (:active)</h2>
+      <p class="explain">Press (active) a button to see a pressed effect.</p>
+      <button class="btn primary">Primary</button>
+      <button class="btn secondary">Secondary</button>
+    </section>
+
+    <section class="example">
+      <h2>Inputs (:focus)</h2>
+      <p class="explain">Focus an input to highlight it with a glow using <code>:focus</code>.</p>
+      <input type="text" placeholder="Focus me" class="text-input">
+      <input type="text" placeholder="And me" class="text-input">
+    </section>
+
+    <section class="example">
+      <h2>List Items (:nth-child)</h2>
+      <p class="explain">Styling every even/odd child using <code>:nth-child()</code>.</p>
+      <ul class="demo-list">
+        <li>Item one</li>
+        <li>Item two</li>
+        <li>Item three</li>
+        <li>Item four</li>
+        <li>Item five</li>
+        <li>Item six</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Assignment 08 — Q1 Pseudo-Classes</p>
+  </footer>
+</body>
+</html>

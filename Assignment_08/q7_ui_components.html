@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+  Assignment 08 - Q7
+  User Interface Components Page
+  Search bar, buttons, dropdown in a card container
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Q7 - UI Components</title>
+  <link rel="stylesheet" href="q7_ui_components.css">
+</head>
+<body>
+  <header>
+    <h1>UI Components</h1>
+    <p>Search, buttons, and dropdown menu</p>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2>Search & Interact</h2>
+      
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." class="search-input">
+        <button class="search-btn">Search</button>
+      </div>
+
+      <div class="dropdown-wrapper">
+        <label for="menu">Choose an option:</label>
+        <select id="menu" class="dropdown">
+          <option value="">Select...</option>
+          <option value="option1">Profile Settings</option>
+          <option value="option2">Account</option>
+          <option value="option3">Preferences</option>
+          <option value="option4">Logout</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-secondary">Cancel</button>
+        <button class="btn btn-tertiary">Reset</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Assignment 08 — Q7 UI Components</p>
+  </footer>
+</body>
+</html>

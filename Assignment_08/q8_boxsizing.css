@@ -1,0 +1,29 @@
+/* Assignment 08 - Q8 - Box-Sizing Comparison */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:#f4f7fb;color:#222}
+header{background:#34495e;color:#fff;padding:1.25rem;text-align:center}
+header p{opacity:.9}
+
+/* Flexbox centered layout */
+.comparison-container{display:flex;justify-content:center;align-items:center;gap:3rem;padding:3rem 2rem;flex-wrap:wrap;max-width:1000px;margin:0 auto}
+
+.box-demo{text-align:center;flex:1;min-width:280px}
+.box-demo h2{color:#2c3e50;margin-bottom:1rem}
+
+/* Base box styling */
+.box{width:300px;height:150px;padding:20px;border:3px solid;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.box .label{font-weight:600;color:#fff}
+
+/* content-box example */
+.content-box{box-sizing:content-box;background:#3498db;border-color:#2980b9}
+
+/* border-box example */
+.border-box{box-sizing:border-box;background:#2ecc71;border-color:#27ae60}
+
+.explanation{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:left}
+.explanation p{font-size:.95rem;margin-bottom:.5rem;color:#333}
+.explanation strong{color:#2c3e50}
+
+footer{background:#34495e;color:#fff;text-align:center;padding:1rem;margin-top:2rem}
+
+@media(max-width:700px){.comparison-container{flex-direction:column;gap:2rem}}

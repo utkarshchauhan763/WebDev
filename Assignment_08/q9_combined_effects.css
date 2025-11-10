@@ -1,0 +1,32 @@
+/* Assignment 08 - Q9 - Combined Effects */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:#f4f7fb;color:#222}
+header{background:#34495e;color:#fff;padding:1.25rem;text-align:center}
+header p{opacity:.9}
+
+/* Flexbox grid */
+.effects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;padding:2rem;max-width:1000px;margin:0 auto}
+
+.effect-card{text-align:center;display:flex;flex-direction:column;align-items:center}
+.effect-card p{font-size:.9rem;color:#666;margin-top:.75rem}
+
+/* Base button */
+.effect-btn{padding:.75rem 1.5rem;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:all .3s ease;background:#667eea;color:#fff;box-shadow:0 4px 12px rgba(102,126,234,.3)}
+
+/* Effect 1: Grow and Color */
+.effect-btn:hover{transform:scale(1.15);background:#764ba2;box-shadow:0 6px 16px rgba(102,126,234,.4)}
+
+/* Effect 2: Rotate and Scale */
+.rotate-scale:hover{transform:rotate(8deg) scale(1.1);background:#f093fb}
+
+/* Effect 3: Lift and Shadow */
+.shadow-lift:hover{transform:translateY(-8px);box-shadow:0 12px 24px rgba(0,0,0,.2);background:#2ecc71}
+
+/* Effect 4: Color Shift */
+.color-shift{background:#3498db}
+.color-shift:hover{background:#e74c3c;transform:scale(1.05);box-shadow:0 6px 16px rgba(231,76,60,.3)}
+
+/* Active state */
+.effect-btn:active{transform:scale(.95)}
+
+footer{background:#34495e;color:#fff;text-align:center;padding:1rem;margin-top:2rem}

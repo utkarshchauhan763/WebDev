@@ -1,0 +1,28 @@
+/* Assignment 08 - Q6 - CSS Animations */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:#f4f7fb;color:#222;min-height:100vh;display:flex;flex-direction:column}
+header{background:#34495e;color:#fff;padding:1.25rem;text-align:center}
+header p{opacity:.9}
+
+/* Center animations vertically and horizontally */
+.animation-container{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;padding:3rem 2rem;flex:1}
+
+.animation-box{text-align:center;display:flex;flex-direction:column;align-items:center}
+.animation-box p{font-size:.9rem;color:#666;margin-top:.75rem}
+
+/* Animation 1: Moving box (translate left-right) */
+.box-moving{width:80px;height:80px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;animation:slideHorizontal 2s ease-in-out infinite}
+
+@keyframes slideHorizontal{0%,100%{transform:translateX(0);}50%{transform:translateX(60px)}}
+
+/* Animation 2: Bouncing circle with delay */
+.circle-bounce{width:70px;height:70px;background:#2ecc71;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.85rem;animation:bounceUp 1.5s ease-in-out infinite;animation-delay:.2s}
+
+@keyframes bounceUp{0%,100%{transform:translateY(0);}50%{transform:translateY(-40px)}}
+
+/* Animation 3: Color-changing text */
+.text-color{font-size:2rem;font-weight:700;padding:1.5rem;background:#f8f9fa;border-radius:8px;animation:colorCycle 3s ease-in-out infinite}
+
+@keyframes colorCycle{0%{color:#3498db;}25%{color:#e74c3c;}50%{color:#2ecc71;}75%{color:#f39c12;}100%{color:#3498db}}
+
+footer{background:#34495e;color:#fff;text-align:center;padding:1rem;margin-top:2rem}

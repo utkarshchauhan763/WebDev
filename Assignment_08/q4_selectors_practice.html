@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+  Assignment 08 - Q4
+  CSS Selectors Practice Page
+  Demonstrates element, class, ID, attribute selectors, and combinators
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Q4 - Selectors Practice</title>
+  <link rel="stylesheet" href="q4_selectors_practice.css">
+</head>
+<body>
+  <header>
+    <h1>Selectors Practice</h1>
+    <p>Element, class, ID, attribute selectors and combinators demonstrated below</p>
+  </header>
+
+  <main class="content">
+    <section>
+      <h2>Element Selector</h2>
+      <p>This paragraph is targeted by the element selector <code>p</code>.</p>
+    </section>
+
+    <section>
+      <h2>Class Selector</h2>
+      <p class="highlight">This paragraph uses the class <code>.highlight</code>.</p>
+    </section>
+
+    <section>
+      <h2>ID Selector</h2>
+      <p id="unique">This paragraph uses the ID <code>#unique</code>.</p>
+    </section>
+
+    <section>
+      <h2>Attribute Selector</h2>
+      <a href="https://example.com">HTTPS Link</a>
+      <a href="http://example.com">HTTP Link</a>
+      <input type="text" placeholder="data-role attribute" data-role="input">
+    </section>
+
+    <section>
+      <h2>Combinators</h2>
+      <div class="parent">
+        <p>Direct child (only this p is direct child)</p>
+        <div>
+          <p>Nested paragraph (not direct child of .parent)</p>
+        </div>
+      </div>
+
+      <h3>Adjacent sibling (+)</h3>
+      <h4>Heading H4</h4>
+      <p>Paragraph immediately after H4 (styled by adjacent sibling combinator)</p>
+
+      <h3>General sibling (~)</h3>
+      <h4>Title</h4>
+      <p>First sibling</p>
+      <span>Some span</span>
+      <p>Second sibling matching general sibling</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Assignment 08 — Q4 Selectors Practice</p>
+  </footer>
+</body>
+</html>

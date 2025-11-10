@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+  Assignment 08 - Q8
+  Box-Sizing Comparison Page
+  Two boxes showing content-box vs border-box difference
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Q8 - Box-Sizing Comparison</title>
+  <link rel="stylesheet" href="q8_boxsizing.css">
+</head>
+<body>
+  <header>
+    <h1>Box-Sizing Comparison</h1>
+    <p>Understanding content-box vs border-box</p>
+  </header>
+
+  <main class="comparison-container">
+    <div class="box-demo">
+      <h2>content-box (default)</h2>
+      <div class="box content-box">
+        <div class="label">Content Area</div>
+      </div>
+      <div class="explanation">
+        <p><strong>Width:</strong> 300px</p>
+        <p><strong>Padding:</strong> 20px</p>
+        <p><strong>Border:</strong> 3px</p>
+        <p><strong>Total:</strong> 346px (300 + 40 + 6)</p>
+      </div>
+    </div>
+
+    <div class="box-demo">
+      <h2>border-box</h2>
+      <div class="box border-box">
+        <div class="label">Content Area</div>
+      </div>
+      <div class="explanation">
+        <p><strong>Width:</strong> 300px</p>
+        <p><strong>Padding:</strong> 20px</p>
+        <p><strong>Border:</strong> 3px</p>
+        <p><strong>Total:</strong> 300px (fixed)</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Assignment 08 — Q8 Box-Sizing</p>
+  </footer>
+</body>
+</html>

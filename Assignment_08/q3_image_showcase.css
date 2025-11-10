@@ -1,0 +1,25 @@
+/* Assignment 08 - Q3 - Image Showcase */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:#f7f9fb;color:#222}
+header{background:#34495e;color:#fff;padding:1.25rem;text-align:center}
+header p{opacity:.9}
+
+/* Grid gallery: 3 columns on desktop, 2 on tablet, 1 on small */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;padding:2rem;max-width:1200px;margin:0 auto}
+figure{position:relative;overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+figure img{display:block;width:100%;height:220px;object-fit:cover;transition:transform .35s ease}
+
+/* Overlay layer using pseudo-element */
+figure::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .35s ease}
+
+/* Caption styling */
+figcaption{position:absolute;left:0;right:0;bottom:0;padding:0.75rem 1rem;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.6));font-weight:600}
+
+/* Hover: scale image and darken overlay */
+figure:hover img{transform:scale(1.08)}
+figure:hover::before{background:rgba(0,0,0,.25)}
+
+/* Rounded corners and shadow already applied; adjust image height on larger screens */
+@media(min-width:1200px){figure img{height:260px}}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}figure img{height:200px}}
+@media(max-width:700px){.gallery{grid-template-columns:1fr;padding:1rem}figure img{height:240px}}

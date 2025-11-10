@@ -1,0 +1,22 @@
+/* Assignment 08 - Q2 - Tooltip Demonstration */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:#f7f9fc;color:#222;min-height:100vh;display:flex;flex-direction:column}
+header{background:#34495e;color:#fff;padding:1.25rem;text-align:center}
+header p{opacity:.9}
+
+.center-row{display:flex;gap:2rem;justify-content:center;align-items:center;padding:4rem;flex-wrap:wrap}
+
+.tooltip-item{position:relative;display:flex;flex-direction:column;align-items:center}
+.trigger{display:inline-block;padding:.6rem .9rem;border-radius:8px;background:#fff;border:1px solid #e6eef8;cursor:pointer;font-size:1.25rem}
+
+/* Tooltip hidden by default: positioned above the trigger, invisible with opacity 0 */
+.tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(-8px);background:rgba(0,0,0,.85);color:#fff;padding:.5rem .75rem;border-radius:6px;font-size:.9rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s ease-in-out,transform .3s ease-in-out;z-index:10}
+
+/* Arrow using pseudo-element */
+.tooltip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border-width:6px;border-style:solid;border-color:rgba(0,0,0,.85) transparent transparent transparent}
+
+/* Show tooltip on hover of trigger or when trigger receives focus (keyboard accessible) */
+.tooltip-item:hover .tooltip,.tooltip-item:focus-within .tooltip{opacity:1;transform:translateX(-50%) translateY(-14px);pointer-events:auto}
+
+/* Small responsive adjustments */
+@media(max-width:700px){.center-row{flex-direction:column;padding:2rem}.tooltip{font-size:.85rem}}
