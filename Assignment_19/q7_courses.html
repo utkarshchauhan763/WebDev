@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q7 - Search Courses</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 32px;
+      text-align: center;
+    }
+    .search-section {
+      margin-bottom: 30px;
+    }
+    .search-box {
+      position: relative;
+      margin-bottom: 15px;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+    #searchInput:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    .search-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 6px;
+    }
+    #matchCount {
+      font-weight: 600;
+      color: #667eea;
+    }
+    #clearBtn {
+      padding: 8px 15px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    #clearBtn:hover {
+      background: #c82333;
+    }
+    .courses-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .course-item {
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border-left: 4px solid #667eea;
+      transition: all 0.3s;
+    }
+    .course-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .course-item.hidden {
+      display: none;
+    }
+    .course-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .course-description {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .course-meta {
+      display: flex;
+      gap: 15px;
+      font-size: 13px;
+      color: #999;
+    }
+    .highlight {
+      background: yellow;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+      font-size: 18px;
+      display: none;
+    }
+    .no-results.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎓 Search Courses</h1>
+    
+    <div class="search-section">
+      <div class="search-box">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search courses by title, description, or instructor..."
+        >
+      </div>
+      <div class="search-info">
+        <span id="matchCount">Showing all 10 courses</span>
+        <button id="clearBtn">Clear Search</button>
+      </div>
+    </div>
+
+    <div class="courses-list" id="coursesList">
+      <div class="course-item" data-keywords="javascript programming web development">
+        <div class="course-title">JavaScript Fundamentals</div>
+        <div class="course-description">
+          Learn the basics of JavaScript programming, including variables, functions, and DOM manipulation.
+        </div>
+        <div class="course-meta">
+          <span>👤 John Smith</span>
+          <span>⏱️ 8 hours</span>
+          <span>⭐ 4.5/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="python programming data science">
+        <div class="course-title">Python for Data Science</div>
+        <div class="course-description">
+          Master Python programming for data analysis, visualization, and machine learning applications.
+        </div>
+        <div class="course-meta">
+          <span>👤 Sarah Johnson</span>
+          <span>⏱️ 12 hours</span>
+          <span>⭐ 4.8/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="react frontend javascript framework">
+        <div class="course-title">React Complete Guide</div>
+        <div class="course-description">
+          Build modern web applications with React, including hooks, context API, and state management.
+        </div>
+        <div class="course-meta">
+          <span>👤 Michael Chen</span>
+          <span>⏱️ 15 hours</span>
+          <span>⭐ 4.7/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="nodejs backend javascript server">
+        <div class="course-title">Node.js Backend Development</div>
+        <div class="course-description">
+          Create scalable server-side applications with Node.js, Express, and MongoDB.
+        </div>
+        <div class="course-meta">
+          <span>👤 Emily Davis</span>
+          <span>⏱️ 10 hours</span>
+          <span>⭐ 4.6/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="css design frontend styling">
+        <div class="course-title">Advanced CSS & Sass</div>
+        <div class="course-description">
+          Master modern CSS techniques, animations, grid, flexbox, and Sass preprocessor.
+        </div>
+        <div class="course-meta">
+          <span>👤 Lisa Anderson</span>
+          <span>⏱️ 6 hours</span>
+          <span>⭐ 4.4/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="sql database mysql postgresql">
+        <div class="course-title">SQL Database Mastery</div>
+        <div class="course-description">
+          Learn SQL fundamentals, complex queries, database design, and optimization techniques.
+        </div>
+        <div class="course-meta">
+          <span>👤 David Kim</span>
+          <span>⏱️ 9 hours</span>
+          <span>⭐ 4.5/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="git version control github">
+        <div class="course-title">Git & GitHub Essentials</div>
+        <div class="course-description">
+          Master version control with Git, collaborate on GitHub, and manage code repositories effectively.
+        </div>
+        <div class="course-meta">
+          <span>👤 Robert Taylor</span>
+          <span>⏱️ 5 hours</span>
+          <span>⭐ 4.6/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="docker containers devops deployment">
+        <div class="course-title">Docker & Containers</div>
+        <div class="course-description">
+          Learn containerization with Docker, create images, manage containers, and deploy applications.
+        </div>
+        <div class="course-meta">
+          <span>👤 Amanda White</span>
+          <span>⏱️ 7 hours</span>
+          <span>⭐ 4.7/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="typescript javascript types">
+        <div class="course-title">TypeScript Deep Dive</div>
+        <div class="course-description">
+          Write type-safe JavaScript with TypeScript, interfaces, generics, and advanced patterns.
+        </div>
+        <div class="course-meta">
+          <span>👤 Chris Brown</span>
+          <span>⏱️ 8 hours</span>
+          <span>⭐ 4.5/5</span>
+        </div>
+      </div>
+
+      <div class="course-item" data-keywords="aws cloud deployment hosting">
+        <div class="course-title">AWS Cloud Fundamentals</div>
+        <div class="course-description">
+          Deploy and manage applications on Amazon Web Services, including EC2, S3, and Lambda.
+        </div>
+        <div class="course-meta">
+          <span>👤 Nina Patel</span>
+          <span>⏱️ 11 hours</span>
+          <span>⭐ 4.8/5</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-results" id="noResults">
+      😕 No courses found matching your search
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="q7_courses.js"></script>
+</body>
+</html>

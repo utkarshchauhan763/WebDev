@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q4 - Special Offer Banner</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+    .controls {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: white;
+    }
+    .btn-hide { background: #dc3545; }
+    .btn-show { background: #28a745; }
+    .btn-slide { background: #667eea; }
+    .btn-fade { background: #f093fb; }
+    .btn-auto { background: #ffc107; color: #333; }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .banners-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .banner {
+      padding: 30px;
+      border-radius: 12px;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s;
+      position: relative;
+    }
+    .banner:hover {
+      transform: scale(1.02);
+    }
+    .banner-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .banner-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    .banner-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    .banner-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+    .banner-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,0.3);
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      color: white;
+      transition: all 0.3s;
+    }
+    .close-btn:hover {
+      background: rgba(255,255,255,0.5);
+      transform: rotate(90deg);
+    }
+    .banner-text {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .banner-subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .auto-rotate-indicator {
+      text-align: center;
+      margin-top: 20px;
+      padding: 15px;
+      background: #e3f2fd;
+      border-radius: 8px;
+      color: #1565c0;
+      font-weight: 600;
+    }
+    .auto-rotate-indicator.active {
+      background: #d4edda;
+      color: #155724;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎁 Special Offer Banners</h1>
+    
+    <div class="controls">
+      <button class="btn-hide" id="hideBtn">❌ Hide All</button>
+      <button class="btn-show" id="showBtn">✅ Show All</button>
+      <button class="btn-slide" id="slideBtn">📤 Slide Toggle</button>
+      <button class="btn-fade" id="fadeBtn">💫 Fade Toggle</button>
+      <button class="btn-auto" id="autoRotateBtn">🔄 Auto Rotate</button>
+    </div>
+
+    <div class="auto-rotate-indicator" id="rotateIndicator">
+      Auto-rotation: OFF
+    </div>
+    
+    <div class="banners-container">
+      <div class="banner banner-1">
+        <button class="close-btn" data-action="close">×</button>
+        <div class="banner-text">🎉 50% OFF Summer Sale!</div>
+        <div class="banner-subtitle">Limited time offer • Use code: SUMMER50</div>
+      </div>
+
+      <div class="banner banner-2">
+        <button class="close-btn" data-action="close">×</button>
+        <div class="banner-text">🚀 Free Shipping on Orders $50+</div>
+        <div class="banner-subtitle">No code needed • Automatically applied</div>
+      </div>
+
+      <div class="banner banner-3">
+        <button class="close-btn" data-action="close">×</button>
+        <div class="banner-text">💎 VIP Members Get 30% Extra</div>
+        <div class="banner-subtitle">Join our loyalty program today</div>
+      </div>
+
+      <div class="banner banner-4">
+        <button class="close-btn" data-action="close">×</button>
+        <div class="banner-text">🎁 Buy 2 Get 1 Free</div>
+        <div class="banner-subtitle">On selected items • While supplies last</div>
+      </div>
+
+      <div class="banner banner-5">
+        <button class="close-btn" data-action="close">×</button>
+        <div class="banner-text">⚡ Flash Sale - 24 Hours Only!</div>
+        <div class="banner-subtitle">Up to 70% off • Hurry!</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="q4_banners.js"></script>
+</body>
+</html>

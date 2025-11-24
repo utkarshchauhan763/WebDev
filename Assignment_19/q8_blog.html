@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q8 - Dynamic Blog Posts</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 32px;
+      text-align: center;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: white;
+    }
+    .btn-add { background: #28a745; }
+    .btn-prepend { background: #ffc107; color: #333; }
+    .btn-remove { background: #dc3545; }
+    .btn-highlight { background: #667eea; }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .add-post-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #e3f2fd;
+      border-radius: 10px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea {
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .blog-post {
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border-left: 4px solid #667eea;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .blog-post:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .blog-post.featured {
+      background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%);
+      border-left-color: #ffc107;
+    }
+    .blog-post.highlighted {
+      background: #d4edda;
+      border-left-color: #28a745;
+    }
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .post-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+    .post-date {
+      font-size: 13px;
+      color: #999;
+    }
+    .post-content {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    .post-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      padding: 4px 12px;
+      background: #667eea;
+      color: white;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+    .delete-btn:hover {
+      background: #c82333;
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Dynamic Blog Posts Manager</h1>
+    
+    <div class="add-post-section">
+      <h3 style="margin-bottom: 15px; color: #333;">✍️ Create New Post</h3>
+      <div class="input-group">
+        <input type="text" id="postTitle" placeholder="Post title...">
+        <textarea id="postContent" placeholder="Post content..."></textarea>
+        <input type="text" id="postTags" placeholder="Tags (comma-separated)...">
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-add" id="addPostBtn">➕ Add New Post</button>
+      <button class="btn-prepend" id="prependPostBtn">⭐ Prepend Featured Post</button>
+      <button class="btn-remove" id="removeLastBtn">🗑️ Remove Last Post</button>
+      <button class="btn-highlight" id="highlightKeywordsBtn">✨ Highlight "JavaScript"</button>
+    </div>
+
+    <div class="posts-list" id="postsList">
+      <div class="blog-post">
+        <button class="delete-btn">×</button>
+        <div class="post-header">
+          <div class="post-title">Getting Started with JavaScript</div>
+          <div class="post-date">Nov 20, 2025</div>
+        </div>
+        <div class="post-content">
+          JavaScript is a versatile programming language that powers the modern web. Learn the fundamentals and start building interactive applications today.
+        </div>
+        <div class="post-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">Tutorial</span>
+        </div>
+      </div>
+
+      <div class="blog-post">
+        <button class="delete-btn">×</button>
+        <div class="post-header">
+          <div class="post-title">CSS Grid Layout Mastery</div>
+          <div class="post-date">Nov 19, 2025</div>
+        </div>
+        <div class="post-content">
+          Master CSS Grid to create complex, responsive layouts with ease. This powerful layout system simplifies web design significantly.
+        </div>
+        <div class="post-tags">
+          <span class="tag">CSS</span>
+          <span class="tag">Design</span>
+        </div>
+      </div>
+
+      <div class="blog-post">
+        <button class="delete-btn">×</button>
+        <div class="post-header">
+          <div class="post-title">React Hooks Deep Dive</div>
+          <div class="post-date">Nov 18, 2025</div>
+        </div>
+        <div class="post-content">
+          Understanding React Hooks is essential for modern React development. Learn useState, useEffect, and custom hooks.
+        </div>
+        <div class="post-tags">
+          <span class="tag">React</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="blog-post">
+        <button class="delete-btn">×</button>
+        <div class="post-header">
+          <div class="post-title">Node.js Best Practices</div>
+          <div class="post-date">Nov 17, 2025</div>
+        </div>
+        <div class="post-content">
+          Build scalable and maintainable Node.js applications using these best practices and design patterns.
+        </div>
+        <div class="post-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Backend</span>
+        </div>
+      </div>
+
+      <div class="blog-post">
+        <button class="delete-btn">×</button>
+        <div class="post-header">
+          <div class="post-title">TypeScript for Beginners</div>
+          <div class="post-date">Nov 16, 2025</div>
+        </div>
+        <div class="post-content">
+          TypeScript adds type safety to JavaScript, making your code more robust and maintainable. Start your TypeScript journey here.
+        </div>
+        <div class="post-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="q8_blog.js"></script>
+</body>
+</html>

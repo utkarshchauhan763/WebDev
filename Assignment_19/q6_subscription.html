@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q6 - Event Subscription Panel</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .add-topic-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+    .input-group {
+      display: flex;
+      gap: 10px;
+    }
+    #newTopicInput {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    #newTopicInput:focus {
+      outline: none;
+      border-color: #4facfe;
+    }
+    #addTopicBtn {
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    #addTopicBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+    }
+    .subscriptions {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .subscription-item {
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    .subscription-item:hover {
+      background: #e9ecef;
+      transform: translateX(5px);
+    }
+    .subscription-item.subscribed {
+      background: #d4edda;
+      border-left: 5px solid #28a745;
+    }
+    .subscription-item.unsubscribed {
+      background: #f8d7da;
+      border-left: 5px solid #dc3545;
+      opacity: 0.7;
+    }
+    .topic-info {
+      flex: 1;
+    }
+    .topic-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .topic-status {
+      font-size: 13px;
+      color: #666;
+    }
+    .subscription-item.subscribed .topic-status {
+      color: #155724;
+      font-weight: 600;
+    }
+    .subscription-item.unsubscribed .topic-status {
+      color: #721c24;
+      font-weight: 600;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    button.action-btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: white;
+    }
+    .subscribe-btn {
+      background: #28a745;
+    }
+    .subscribe-btn:hover {
+      background: #218838;
+    }
+    .unsubscribe-btn {
+      background: #dc3545;
+    }
+    .unsubscribe-btn:hover {
+      background: #c82333;
+    }
+    .remove-btn {
+      background: #6c757d;
+    }
+    .remove-btn:hover {
+      background: #5a6268;
+    }
+    .message-container {
+      margin-top: 20px;
+      min-height: 60px;
+    }
+    .success-message {
+      padding: 15px;
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      animation: slideIn 0.4s;
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔔 Event Subscription Panel</h1>
+    <p class="subtitle">Manage your event subscriptions and notifications</p>
+    
+    <div class="add-topic-section">
+      <h3 style="margin-bottom: 15px; color: #333;">➕ Add New Topic</h3>
+      <div class="input-group">
+        <input type="text" id="newTopicInput" placeholder="Enter new subscription topic...">
+        <button id="addTopicBtn">Add Topic</button>
+      </div>
+    </div>
+
+    <div class="subscriptions" id="subscriptions">
+      <div class="subscription-item" data-topic="tech-news">
+        <div class="topic-info">
+          <div class="topic-name">💻 Tech News Updates</div>
+          <div class="topic-status">Not subscribed</div>
+        </div>
+        <div class="action-buttons">
+          <button class="action-btn subscribe-btn">Subscribe</button>
+          <button class="action-btn unsubscribe-btn" style="display:none;">Unsubscribe</button>
+          <button class="action-btn remove-btn">Remove</button>
+        </div>
+      </div>
+
+      <div class="subscription-item" data-topic="webinars">
+        <div class="topic-info">
+          <div class="topic-name">🎓 Weekly Webinars</div>
+          <div class="topic-status">Not subscribed</div>
+        </div>
+        <div class="action-buttons">
+          <button class="action-btn subscribe-btn">Subscribe</button>
+          <button class="action-btn unsubscribe-btn" style="display:none;">Unsubscribe</button>
+          <button class="action-btn remove-btn">Remove</button>
+        </div>
+      </div>
+
+      <div class="subscription-item" data-topic="product-launches">
+        <div class="topic-info">
+          <div class="topic-name">🚀 Product Launches</div>
+          <div class="topic-status">Not subscribed</div>
+        </div>
+        <div class="action-buttons">
+          <button class="action-btn subscribe-btn">Subscribe</button>
+          <button class="action-btn unsubscribe-btn" style="display:none;">Unsubscribe</button>
+          <button class="action-btn remove-btn">Remove</button>
+        </div>
+      </div>
+
+      <div class="subscription-item" data-topic="newsletters">
+        <div class="topic-info">
+          <div class="topic-name">📧 Monthly Newsletter</div>
+          <div class="topic-status">Not subscribed</div>
+        </div>
+        <div class="action-buttons">
+          <button class="action-btn subscribe-btn">Subscribe</button>
+          <button class="action-btn unsubscribe-btn" style="display:none;">Unsubscribe</button>
+          <button class="action-btn remove-btn">Remove</button>
+        </div>
+      </div>
+
+      <div class="subscription-item" data-topic="special-offers">
+        <div class="topic-info">
+          <div class="topic-name">🎁 Special Offers & Deals</div>
+          <div class="topic-status">Not subscribed</div>
+        </div>
+        <div class="action-buttons">
+          <button class="action-btn subscribe-btn">Subscribe</button>
+          <button class="action-btn unsubscribe-btn" style="display:none;">Unsubscribe</button>
+          <button class="action-btn remove-btn">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-container" id="messageContainer"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="q6_subscription.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q9 - Multi-jQuery Widgets</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .info-box {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #1565c0;
+      font-weight: 600;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .widget {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      border: 3px solid transparent;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .widget:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .widget.active {
+      border-color: #ffc107;
+      background: #fff3cd;
+    }
+    .widget-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #dee2e6;
+    }
+    .widget-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+    .widget-version {
+      background: #667eea;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .widget-content {
+      color: #666;
+      line-height: 1.6;
+    }
+    .carousel-widget {
+      position: relative;
+    }
+    .carousel-slides {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #e9ecef;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-slide {
+      display: none;
+      font-size: 48px;
+      animation: fadeIn 0.5s;
+    }
+    .carousel-slide.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .carousel-dot.active {
+      background: #667eea;
+      width: 30px;
+      border-radius: 6px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-top: 15px;
+      width: 100%;
+    }
+    button:hover {
+      background: #5568d3;
+    }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.show {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      animation: slideUp 0.4s;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .tooltip {
+      display: none;
+      position: absolute;
+      background: #333;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      z-index: 1000;
+      white-space: nowrap;
+    }
+    .has-tooltip {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎛️ Multi-jQuery Widgets Dashboard</h1>
+    <p class="subtitle">Using jQuery.noConflict() to run multiple jQuery versions</p>
+    
+    <div class="info-box" id="infoBox">
+      🔄 jQuery Version 1 (carousel) & Version 2 (modals/tooltips) running simultaneously
+    </div>
+
+    <div class="dashboard">
+      <!-- Carousel Widget (jQuery v1) -->
+      <div class="widget carousel-widget" data-version="v1">
+        <div class="widget-header">
+          <div class="widget-title">🎠 Carousel Slider</div>
+          <div class="widget-version">jQuery v1</div>
+        </div>
+        <div class="widget-content">
+          <div class="carousel-slides">
+            <div class="carousel-slide active">🎨</div>
+            <div class="carousel-slide">🚀</div>
+            <div class="carousel-slide">💡</div>
+            <div class="carousel-slide">⭐</div>
+          </div>
+          <div class="carousel-controls">
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+          </div>
+          <button id="startCarousel">▶️ Start Rotation</button>
+        </div>
+      </div>
+
+      <!-- Modal Widget (jQuery v2) -->
+      <div class="widget" data-version="v2">
+        <div class="widget-header">
+          <div class="widget-title">📢 Notifications</div>
+          <div class="widget-version">jQuery v2</div>
+        </div>
+        <div class="widget-content">
+          <p>Manage your notification popups with modal dialogs.</p>
+          <button id="showModal">🔔 Show Notification</button>
+        </div>
+      </div>
+
+      <!-- Analytics Widget (jQuery v1) -->
+      <div class="widget" data-version="v1">
+        <div class="widget-header">
+          <div class="widget-title">📊 Analytics</div>
+          <div class="widget-version">jQuery v1</div>
+        </div>
+        <div class="widget-content">
+          <p>Track your website performance and visitor statistics.</p>
+          <button id="highlightWidget">✨ Highlight Active</button>
+        </div>
+      </div>
+
+      <!-- Settings Widget (jQuery v2) with Tooltips -->
+      <div class="widget has-tooltip" data-version="v2" data-tooltip="Configure your dashboard preferences">
+        <div class="widget-header">
+          <div class="widget-title">⚙️ Settings</div>
+          <div class="widget-version">jQuery v2</div>
+        </div>
+        <div class="widget-content">
+          <p>Customize dashboard appearance and functionality.</p>
+          <button class="has-tooltip" data-tooltip="Save your current settings">💾 Save Settings</button>
+        </div>
+      </div>
+
+      <!-- Reports Widget (jQuery v1) -->
+      <div class="widget" data-version="v1">
+        <div class="widget-header">
+          <div class="widget-title">📈 Reports</div>
+          <div class="widget-version">jQuery v1</div>
+        </div>
+        <div class="widget-content">
+          <p>Generate and export detailed reports of your data.</p>
+          <button class="has-tooltip" data-tooltip="Download monthly report">📥 Generate Report</button>
+        </div>
+      </div>
+
+      <!-- Messages Widget (jQuery v2) -->
+      <div class="widget has-tooltip" data-version="v2" data-tooltip="Check your inbox for new messages">
+        <div class="widget-header">
+          <div class="widget-title">💬 Messages</div>
+          <div class="widget-version">jQuery v2</div>
+        </div>
+        <div class="widget-content">
+          <p>View and manage your message inbox.</p>
+          <button id="showMessages">📬 Open Inbox</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <button class="modal-close">×</button>
+      <h2 style="margin-bottom: 15px; color: #333;">🔔 New Notification</h2>
+      <p style="color: #666; line-height: 1.6;">
+        You have successfully loaded this modal using jQuery Version 2!
+        This demonstrates jQuery.noConflict() working properly.
+      </p>
+    </div>
+  </div>
+
+  <!-- Load jQuery Version 1.12.4 -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+    // Save jQuery v1 reference using noConflict()
+    var $v1 = jQuery.noConflict(true);
+  </script>
+
+  <!-- Load jQuery Version 3.6.0 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Save jQuery v2 reference
+    var $v2 = jQuery.noConflict(true);
+  </script>
+
+  <script src="q9_widgets.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q3 - Interactive FAQ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .faq-item.focused {
+      background: #fff3cd;
+      border-color: #ffc107;
+    }
+    .faq-question {
+      padding: 20px;
+      background: #f8f9fa;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      color: #333;
+      transition: all 0.3s;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question:hover {
+      background: #667eea;
+      color: white;
+    }
+    .faq-question .icon {
+      transition: transform 0.3s;
+    }
+    .faq-question.active .icon {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 20px;
+      background: white;
+      color: #555;
+      line-height: 1.8;
+      display: none;
+      border-top: 2px solid #e0e0e0;
+    }
+    .answer-input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .answer-input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    .collapse-all-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 30px;
+      transition: all 0.3s;
+    }
+    .collapse-all-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(240, 147, 251, 0.4);
+    }
+    .info {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #1565c0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>❓ Interactive FAQ</h1>
+    <p class="subtitle">Click questions to view answers • Hover to highlight • Double-click to collapse all</p>
+    
+    <div class="info">
+      💡 Try: Click to toggle • Hover to change color • Double-click to collapse all • Focus input to highlight parent
+    </div>
+
+    <button class="collapse-all-btn">Collapse All Answers</button>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        What is jQuery?
+        <span class="icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, and animation much simpler with an easy-to-use API.
+        <input type="text" class="answer-input" placeholder="Have a follow-up question? Type here...">
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        How do I install jQuery?
+        <span class="icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        You can include jQuery in your project by adding a CDN link in your HTML file or by downloading it locally. The CDN method is recommended for faster loading times.
+        <input type="text" class="answer-input" placeholder="Need more help? Ask here...">
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        What are jQuery selectors?
+        <span class="icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        jQuery selectors allow you to select and manipulate HTML elements. They are based on CSS selectors and also have custom selectors for more specific targeting. Examples: $('#id'), $('.class'), $('element').
+        <input type="text" class="answer-input" placeholder="Want examples? Ask here...">
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        What is event delegation in jQuery?
+        <span class="icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        Event delegation refers to the process of using event propagation (bubbling) to handle events at a higher level in the DOM than the element on which the event originated. It allows us to attach a single event listener to a parent element.
+        <input type="text" class="answer-input" placeholder="Still confused? Type your question...">
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        How do I make AJAX requests with jQuery?
+        <span class="icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        jQuery provides several methods for AJAX functionality: $.ajax(), $.get(), $.post(), and $.getJSON(). These methods make it easy to load data from the server without refreshing the page.
+        <input type="text" class="answer-input" placeholder="Need code examples? Ask here...">
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        What are jQuery effects and animations?
+        <span class="icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        jQuery provides a variety of effects and animations like .hide(), .show(), .fadeIn(), .fadeOut(), .slideUp(), .slideDown(), and .animate() for custom animations. These make it easy to add visual effects to your web pages.
+        <input type="text" class="answer-input" placeholder="Want to see demos? Ask here...">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="q3_faq.js"></script>
+</body>
+</html>

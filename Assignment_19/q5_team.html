@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q5 - Team Members Directory</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .controls {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: white;
+      background: #667eea;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    .departments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .department {
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .department:hover {
+      border-color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    }
+    .department.highlighted {
+      background: #e8eaf6;
+      border-color: #667eea;
+    }
+    .dept-header {
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #667eea;
+    }
+    .member {
+      padding: 15px;
+      margin-bottom: 10px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .member:hover {
+      background: #e9ecef;
+      transform: translateX(5px);
+    }
+    .member.manager {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-weight: 600;
+    }
+    .member.highlighted {
+      background: #fff3cd;
+      border: 2px solid #ffc107;
+    }
+    .member.manager.highlighted {
+      background: linear-gradient(135deg, #ffc107 0%, #ff6f00 100%);
+    }
+    .member-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .member-role {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+    .contact-info {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      font-size: 13px;
+    }
+    .manager .contact-info {
+      border-top-color: rgba(255,255,255,0.3);
+    }
+    .member:not(.manager) .contact-info {
+      border-top-color: #dee2e6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>👥 Team Members Directory</h1>
+    <p class="subtitle">Click managers • Hover employees • Select departments • Explore relationships</p>
+    
+    <div class="controls">
+      <button id="randomEmployee">🎲 Highlight Random Employee</button>
+      <button id="collapseAll">📁 Collapse All</button>
+      <button id="expandAll">📂 Expand All</button>
+    </div>
+
+    <div class="departments">
+      <div class="department" data-dept="engineering">
+        <div class="dept-header">⚙️ Engineering</div>
+        
+        <div class="member manager" data-role="manager">
+          <div class="member-name">Sarah Johnson</div>
+          <div class="member-role">Engineering Manager</div>
+          <div class="contact-info">
+            📧 sarah.j@company.com<br>
+            📱 +1 (555) 123-4567
+          </div>
+        </div>
+
+        <div class="member" data-role="employee">
+          <div class="member-name">Michael Chen</div>
+          <div class="member-role">Senior Developer</div>
+          <div class="contact-info">
+            📧 michael.c@company.com<br>
+            📱 +1 (555) 234-5678
+          </div>
+        </div>
+
+        <div class="member" data-role="employee">
+          <div class="member-name">Emily Davis</div>
+          <div class="member-role">Frontend Developer</div>
+          <div class="contact-info">
+            📧 emily.d@company.com<br>
+            📱 +1 (555) 345-6789
+          </div>
+        </div>
+
+        <div class="member" data-role="employee">
+          <div class="member-name">James Wilson</div>
+          <div class="member-role">Backend Developer</div>
+          <div class="contact-info">
+            📧 james.w@company.com<br>
+            📱 +1 (555) 456-7890
+          </div>
+        </div>
+      </div>
+
+      <div class="department" data-dept="design">
+        <div class="dept-header">🎨 Design</div>
+        
+        <div class="member manager" data-role="manager">
+          <div class="member-name">Lisa Anderson</div>
+          <div class="member-role">Design Manager</div>
+          <div class="contact-info">
+            📧 lisa.a@company.com<br>
+            📱 +1 (555) 567-8901
+          </div>
+        </div>
+
+        <div class="member" data-role="employee">
+          <div class="member-name">David Kim</div>
+          <div class="member-role">UI/UX Designer</div>
+          <div class="contact-info">
+            📧 david.k@company.com<br>
+            📱 +1 (555) 678-9012
+          </div>
+        </div>
+
+        <div class="member" data-role="employee">
+          <div class="member-name">Rachel Green</div>
+          <div class="member-role">Graphic Designer</div>
+          <div class="contact-info">
+            📧 rachel.g@company.com<br>
+            📱 +1 (555) 789-0123
+          </div>
+        </div>
+      </div>
+
+      <div class="department" data-dept="marketing">
+        <div class="dept-header">📢 Marketing</div>
+        
+        <div class="member manager" data-role="manager">
+          <div class="member-name">Robert Taylor</div>
+          <div class="member-role">Marketing Manager</div>
+          <div class="contact-info">
+            📧 robert.t@company.com<br>
+            📱 +1 (555) 890-1234
+          </div>
+        </div>
+
+        <div class="member" data-role="employee">
+          <div class="member-name">Amanda White</div>
+          <div class="member-role">Content Strategist</div>
+          <div class="contact-info">
+            📧 amanda.w@company.com<br>
+            📱 +1 (555) 901-2345
+          </div>
+        </div>
+
+        <div class="member" data-role="employee">
+          <div class="member-name">Chris Brown</div>
+          <div class="member-role">Social Media Manager</div>
+          <div class="contact-info">
+            📧 chris.b@company.com<br>
+            📱 +1 (555) 012-3456
+          </div>
+        </div>
+
+        <div class="member" data-role="employee">
+          <div class="member-name">Nina Patel</div>
+          <div class="member-role">Marketing Analyst</div>
+          <div class="contact-info">
+            📧 nina.p@company.com<br>
+            📱 +1 (555) 123-4568
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="q5_team.js"></script>
+</body>
+</html>

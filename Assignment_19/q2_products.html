@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q2 - Product Highlight</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .product {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .product.highlighted {
+      background: #fff3cd;
+      border: 3px solid #ffc107;
+    }
+    .product.selected {
+      border: 3px solid #28a745;
+      background: #d4edda;
+    }
+    .product[data-discount="true"] {
+      border-left: 5px solid #dc3545;
+    }
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .product-name {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+    .favorite-icon {
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .favorite-icon:hover {
+      transform: scale(1.3);
+    }
+    .product.selected .favorite-icon {
+      color: #ffc107;
+    }
+    .product-price {
+      font-size: 24px;
+      color: #667eea;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+    .product-discount {
+      color: #dc3545;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .product-details {
+      display: none;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px solid #eee;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+    .product-stock {
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .in-stock {
+      background: #d4edda;
+      color: #155724;
+    }
+    .out-of-stock {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #dc3545;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛍️ Product Highlight System</h1>
+    
+    <div class="products-grid">
+      <div class="product" data-stock="true" data-discount="true">
+        <span class="badge">20% OFF</span>
+        <div class="product-header">
+          <div class="product-name">Laptop Pro 15</div>
+          <div class="favorite-icon">🤍</div>
+        </div>
+        <div class="product-price">$1,199</div>
+        <div class="product-discount">Original: $1,499</div>
+        <div class="product-stock in-stock">✓ In Stock</div>
+        <div class="product-details">
+          • Intel i7 Processor<br>
+          • 16GB RAM, 512GB SSD<br>
+          • 15.6" Retina Display<br>
+          • Free shipping included
+        </div>
+      </div>
+
+      <div class="product" data-stock="false" data-discount="false">
+        <div class="product-header">
+          <div class="product-name">Wireless Mouse</div>
+          <div class="favorite-icon">🤍</div>
+        </div>
+        <div class="product-price">$29</div>
+        <div class="product-stock out-of-stock">✗ Out of Stock</div>
+        <div class="product-details">
+          • Ergonomic design<br>
+          • 2.4GHz wireless<br>
+          • Rechargeable battery<br>
+          • 6 programmable buttons
+        </div>
+      </div>
+
+      <div class="product" data-stock="true" data-discount="true">
+        <span class="badge">15% OFF</span>
+        <div class="product-header">
+          <div class="product-name">Mechanical Keyboard</div>
+          <div class="favorite-icon">🤍</div>
+        </div>
+        <div class="product-price">$119</div>
+        <div class="product-discount">Original: $140</div>
+        <div class="product-stock in-stock">✓ In Stock</div>
+        <div class="product-details">
+          • RGB backlit keys<br>
+          • Cherry MX switches<br>
+          • Aluminum frame<br>
+          • USB Type-C cable
+        </div>
+      </div>
+
+      <div class="product" data-stock="true" data-discount="false">
+        <div class="product-header">
+          <div class="product-name">USB-C Hub</div>
+          <div class="favorite-icon">🤍</div>
+        </div>
+        <div class="product-price">$49</div>
+        <div class="product-stock in-stock">✓ In Stock</div>
+        <div class="product-details">
+          • 7-in-1 connectivity<br>
+          • 4K HDMI output<br>
+          • 100W power delivery<br>
+          • SD card reader
+        </div>
+      </div>
+
+      <div class="product" data-stock="true" data-discount="true">
+        <span class="badge">30% OFF</span>
+        <div class="product-header">
+          <div class="product-name">Webcam HD</div>
+          <div class="favorite-icon">🤍</div>
+        </div>
+        <div class="product-price">$69</div>
+        <div class="product-discount">Original: $99</div>
+        <div class="product-stock in-stock">✓ In Stock</div>
+        <div class="product-details">
+          • 1080p Full HD<br>
+          • Auto-focus lens<br>
+          • Built-in microphone<br>
+          • Plug and play
+        </div>
+      </div>
+
+      <div class="product" data-stock="false" data-discount="false">
+        <div class="product-header">
+          <div class="product-name">Monitor 27"</div>
+          <div class="favorite-icon">🤍</div>
+        </div>
+        <div class="product-price">$349</div>
+        <div class="product-stock out-of-stock">✗ Out of Stock</div>
+        <div class="product-details">
+          • 4K UHD resolution<br>
+          • IPS panel, 99% sRGB<br>
+          • HDR support<br>
+          • Height adjustable stand
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="q2_products.js"></script>
+</body>
+</html>
