@@ -1,0 +1,100 @@
+{
+  "timetable": [
+    {
+      "id": 1,
+      "day": "Monday",
+      "subject": "Data Structures",
+      "faculty": "Dr. Smith",
+      "time": "9:00 AM - 10:30 AM",
+      "room": "CS-101"
+    },
+    {
+      "id": 2,
+      "day": "Monday",
+      "subject": "Web Development",
+      "faculty": "Prof. Johnson",
+      "time": "11:00 AM - 12:30 PM",
+      "room": "CS-102"
+    },
+    {
+      "id": 3,
+      "day": "Monday",
+      "subject": "Database Management",
+      "faculty": "Dr. Williams",
+      "time": "2:00 PM - 3:30 PM",
+      "room": "CS-103"
+    },
+    {
+      "id": 4,
+      "day": "Tuesday",
+      "subject": "Algorithms",
+      "faculty": "Dr. Brown",
+      "time": "9:00 AM - 10:30 AM",
+      "room": "CS-104"
+    },
+    {
+      "id": 5,
+      "day": "Tuesday",
+      "subject": "Operating Systems",
+      "faculty": "Prof. Davis",
+      "time": "11:00 AM - 12:30 PM",
+      "room": "CS-105"
+    },
+    {
+      "id": 6,
+      "day": "Wednesday",
+      "subject": "Computer Networks",
+      "faculty": "Dr. Miller",
+      "time": "9:00 AM - 10:30 AM",
+      "room": "CS-106"
+    },
+    {
+      "id": 7,
+      "day": "Wednesday",
+      "subject": "Software Engineering",
+      "faculty": "Prof. Wilson",
+      "time": "11:00 AM - 12:30 PM",
+      "room": "CS-107"
+    },
+    {
+      "id": 8,
+      "day": "Wednesday",
+      "subject": "Machine Learning",
+      "faculty": "Dr. Taylor",
+      "time": "2:00 PM - 3:30 PM",
+      "room": "CS-108"
+    },
+    {
+      "id": 9,
+      "day": "Thursday",
+      "subject": "Cloud Computing",
+      "faculty": "Prof. Anderson",
+      "time": "9:00 AM - 10:30 AM",
+      "room": "CS-109"
+    },
+    {
+      "id": 10,
+      "day": "Thursday",
+      "subject": "Cyber Security",
+      "faculty": "Dr. Thomas",
+      "time": "11:00 AM - 12:30 PM",
+      "room": "CS-110"
+    },
+    {
+      "id": 11,
+      "day": "Friday",
+      "subject": "Artificial Intelligence",
+      "faculty": "Dr. Martinez",
+      "time": "9:00 AM - 10:30 AM",
+      "room": "CS-111"
+    },
+    {
+      "id": 12,
+      "day": "Friday",
+      "subject": "Mobile App Development",
+      "faculty": "Prof. Garcia",
+      "time": "11:00 AM - 12:30 PM",
+      "room": "CS-112"
+    }
+  ]
+}

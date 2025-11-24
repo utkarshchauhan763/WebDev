@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q4 - Multi-API Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .warning-banner {
+      display: none;
+      background: #fff3cd;
+      border: 2px solid #ffc107;
+      color: #856404;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .warning-banner.show {
+      display: block;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 30px;
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+    .stat-card.users {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .stat-card.orders {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    .stat-card.products {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    .stat-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .stat-value {
+      font-size: 48px;
+      font-weight: 700;
+    }
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      border-radius: 12px;
+      height: 180px;
+    }
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .details-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+    }
+    .detail-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 25px;
+      border: 2px solid #e9ecef;
+    }
+    .detail-header {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #dee2e6;
+    }
+    .detail-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .detail-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #e9ecef;
+      font-size: 14px;
+      color: #666;
+    }
+    .detail-item:last-child {
+      border-bottom: none;
+    }
+    .detail-skeleton {
+      height: 50px;
+      background: #e9ecef;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      animation: loading 1.5s infinite;
+    }
+    .reload-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .reload-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Multi-API Dashboard</h1>
+    <p class="subtitle">Loading data from multiple endpoints using Promise.all</p>
+
+    <div class="warning-banner" id="warningBanner">
+      ⚠️ Some data could not be loaded
+    </div>
+
+    <div class="dashboard-grid" id="statsGrid">
+      <!-- Skeleton loaders shown initially -->
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </div>
+
+    <div class="details-section" id="detailsSection">
+      <!-- Details loaded after stats -->
+    </div>
+
+    <button class="reload-btn" id="reloadBtn">🔄 Reload Dashboard</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

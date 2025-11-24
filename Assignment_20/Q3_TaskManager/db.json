@@ -1,0 +1,64 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Complete project documentation",
+      "priority": "high",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Review pull requests",
+      "priority": "medium",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "Update npm dependencies",
+      "priority": "low",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Fix authentication bug",
+      "priority": "high",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Write unit tests",
+      "priority": "medium",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Optimize database queries",
+      "priority": "high",
+      "completed": true
+    },
+    {
+      "id": 7,
+      "title": "Update README file",
+      "priority": "low",
+      "completed": true
+    },
+    {
+      "id": 8,
+      "title": "Deploy to staging",
+      "priority": "medium",
+      "completed": false
+    },
+    {
+      "id": 9,
+      "title": "Code review session",
+      "priority": "low",
+      "completed": false
+    },
+    {
+      "id": 10,
+      "title": "Client meeting preparation",
+      "priority": "high",
+      "completed": false
+    }
+  ]
+}

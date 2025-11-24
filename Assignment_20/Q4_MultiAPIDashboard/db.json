@@ -1,0 +1,27 @@
+{
+  "users": [
+    { "id": 1, "name": "Alice Johnson", "email": "alice@example.com" },
+    { "id": 2, "name": "Bob Smith", "email": "bob@example.com" },
+    { "id": 3, "name": "Charlie Brown", "email": "charlie@example.com" },
+    { "id": 4, "name": "Diana Prince", "email": "diana@example.com" },
+    { "id": 5, "name": "Ethan Hunt", "email": "ethan@example.com" }
+  ],
+  "orders": [
+    { "id": 1, "userId": 1, "product": "Laptop", "amount": 1200 },
+    { "id": 2, "userId": 2, "product": "Phone", "amount": 800 },
+    { "id": 3, "userId": 1, "product": "Tablet", "amount": 400 },
+    { "id": 4, "userId": 3, "product": "Headphones", "amount": 150 },
+    { "id": 5, "userId": 4, "product": "Monitor", "amount": 300 },
+    { "id": 6, "userId": 2, "product": "Keyboard", "amount": 100 },
+    { "id": 7, "userId": 5, "product": "Mouse", "amount": 50 }
+  ],
+  "products": [
+    { "id": 1, "name": "Laptop", "category": "Electronics", "stock": 25 },
+    { "id": 2, "name": "Phone", "category": "Electronics", "stock": 50 },
+    { "id": 3, "name": "Tablet", "category": "Electronics", "stock": 30 },
+    { "id": 4, "name": "Headphones", "category": "Audio", "stock": 100 },
+    { "id": 5, "name": "Monitor", "category": "Electronics", "stock": 40 },
+    { "id": 6, "name": "Keyboard", "category": "Accessories", "stock": 75 },
+    { "id": 7, "name": "Mouse", "category": "Accessories", "stock": 80 }
+  ]
+}

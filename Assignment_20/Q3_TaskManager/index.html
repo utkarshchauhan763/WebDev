@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q3 - Task Manager with Filters</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .filter-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    .filter-label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #667eea;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .spinner {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .tasks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .task-item {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      border-left: 4px solid #ddd;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .task-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .task-item.completed {
+      opacity: 0.7;
+      background: #e8f5e9;
+    }
+    .task-item.priority-high {
+      border-left-color: #dc3545;
+    }
+    .task-item.priority-medium {
+      border-left-color: #ffc107;
+    }
+    .task-item.priority-low {
+      border-left-color: #28a745;
+    }
+    .task-checkbox {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .task-content {
+      flex: 1;
+    }
+    .task-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .task-item.completed .task-title {
+      text-decoration: line-through;
+      color: #999;
+    }
+    .task-meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .priority-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .priority-badge.high {
+      background: #ffe6e6;
+      color: #dc3545;
+    }
+    .priority-badge.medium {
+      background: #fff3cd;
+      color: #856404;
+    }
+    .priority-badge.low {
+      background: #d4edda;
+      color: #155724;
+    }
+    .task-status {
+      font-size: 12px;
+      color: #999;
+    }
+    .no-tasks {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+    .no-tasks-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+    .stats {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .stat-item {
+      flex: 1;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: #667eea;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✅ Task Manager with Filters</h1>
+    <p class="subtitle">Filter and manage tasks using jQuery AJAX</p>
+
+    <div class="filter-section">
+      <label class="filter-label" for="filterSelect">Filter Tasks:</label>
+      <select id="filterSelect">
+        <option value="all">All Tasks</option>
+        <option value="low">Low Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="high">High Priority</option>
+        <option value="completed">Completed Tasks</option>
+        <option value="pending">Pending Tasks</option>
+      </select>
+    </div>
+
+    <div class="stats" id="statsSection" style="display: none;">
+      <div class="stat-item">
+        <div class="stat-number" id="totalTasks">0</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="completedTasks">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="pendingTasks">0</div>
+        <div class="stat-label">Pending</div>
+      </div>
+    </div>
+
+    <div id="loadingIndicator" class="loading" style="display: none;">
+      <div class="spinner"></div>
+      Loading tasks...
+    </div>
+
+    <div id="tasksList" class="tasks-list"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

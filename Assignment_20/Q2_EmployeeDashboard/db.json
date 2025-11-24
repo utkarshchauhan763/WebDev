@@ -1,0 +1,53 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Smith",
+      "status": "active",
+      "department": "Engineering",
+      "email": "john.smith@company.com"
+    },
+    {
+      "id": 2,
+      "name": "Sarah Johnson",
+      "status": "inactive",
+      "department": "Marketing",
+      "email": "sarah.johnson@company.com"
+    },
+    {
+      "id": 3,
+      "name": "Michael Brown",
+      "status": "active",
+      "department": "Sales",
+      "email": "michael.brown@company.com"
+    },
+    {
+      "id": 4,
+      "name": "Emily Davis",
+      "status": "active",
+      "department": "HR",
+      "email": "emily.davis@company.com"
+    },
+    {
+      "id": 5,
+      "name": "David Wilson",
+      "status": "inactive",
+      "department": "Finance",
+      "email": "david.wilson@company.com"
+    },
+    {
+      "id": 6,
+      "name": "Jessica Martinez",
+      "status": "active",
+      "department": "Engineering",
+      "email": "jessica.martinez@company.com"
+    },
+    {
+      "id": 7,
+      "name": "Robert Taylor",
+      "status": "inactive",
+      "department": "Operations",
+      "email": "robert.taylor@company.com"
+    }
+  ]
+}

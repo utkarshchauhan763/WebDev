@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q5 - College Timetable Viewer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .day-selector {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    .selector-label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: white;
+    }
+    select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    .loading {
+      text-align: center;
+      padding: 60px;
+      color: #667eea;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .spinner {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .timetable-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .class-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 12px;
+      padding: 25px;
+      border-left: 5px solid #667eea;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .class-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .class-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .subject-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+    }
+    .time-badge {
+      background: #667eea;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .class-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: #666;
+      font-size: 15px;
+    }
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .detail-icon {
+      font-size: 18px;
+    }
+    .no-classes {
+      text-align: center;
+      padding: 80px 20px;
+      color: #999;
+    }
+    .no-classes-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+    .no-classes-text {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .no-classes-subtitle {
+      font-size: 16px;
+      color: #bbb;
+    }
+    .day-info {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    .day-name {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .class-count {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📅 College Timetable Viewer</h1>
+    <p class="subtitle">View your class schedule by selecting a day</p>
+
+    <div class="day-selector">
+      <label class="selector-label" for="daySelect">Select Day:</label>
+      <select id="daySelect">
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+      </select>
+    </div>
+
+    <div id="dayInfo" class="day-info" style="display: none;">
+      <div class="day-name" id="dayName">Monday</div>
+      <div class="class-count" id="classCount">Loading...</div>
+    </div>
+
+    <div id="loadingIndicator" class="loading" style="display: none;">
+      <div class="spinner"></div>
+      <div>Loading timetable...</div>
+    </div>
+
+    <div id="timetableList" class="timetable-list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
