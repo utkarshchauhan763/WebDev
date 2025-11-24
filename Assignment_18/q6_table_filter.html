@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q6 - Real-Time Table Filter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #8e9eab 0%, #eef2f3 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    .search-box {
+      margin-bottom: 25px;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    #searchInput:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    thead {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    th {
+      padding: 15px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    tbody tr {
+      border-bottom: 1px solid #eee;
+      transition: background 0.3s;
+    }
+    tbody tr:hover {
+      background: #f8f9fa;
+    }
+    tbody tr.hidden {
+      display: none;
+    }
+    td {
+      padding: 15px;
+      color: #555;
+    }
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      color: #999;
+      font-size: 18px;
+      font-style: italic;
+    }
+    .no-results.show {
+      display: block;
+    }
+    .info {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      padding: 12px 15px;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #1565c0;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Real-Time Student Filter</h1>
+    
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search by name, branch, or CGPA..."
+      >
+    </div>
+
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Branch</th>
+          <th>CGPA</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr>
+          <td>Amit Kumar</td>
+          <td>Computer Science</td>
+          <td>8.5</td>
+        </tr>
+        <tr>
+          <td>Priya Sharma</td>
+          <td>Electronics</td>
+          <td>9.2</td>
+        </tr>
+        <tr>
+          <td>Rahul Verma</td>
+          <td>Mechanical</td>
+          <td>7.8</td>
+        </tr>
+        <tr>
+          <td>Sneha Patel</td>
+          <td>Computer Science</td>
+          <td>9.0</td>
+        </tr>
+        <tr>
+          <td>Vikram Singh</td>
+          <td>Civil</td>
+          <td>8.2</td>
+        </tr>
+        <tr>
+          <td>Anjali Desai</td>
+          <td>Electronics</td>
+          <td>8.7</td>
+        </tr>
+        <tr>
+          <td>Rohit Gupta</td>
+          <td>Computer Science</td>
+          <td>9.5</td>
+        </tr>
+        <tr>
+          <td>Pooja Reddy</td>
+          <td>Mechanical</td>
+          <td>7.5</td>
+        </tr>
+        <tr>
+          <td>Karan Mehta</td>
+          <td>Civil</td>
+          <td>8.0</td>
+        </tr>
+        <tr>
+          <td>Divya Iyer</td>
+          <td>Electronics</td>
+          <td>9.1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="no-results" id="noResults">
+      😕 No results found
+    </div>
+
+    <div class="info">
+      💡 Type to filter students by name, branch, or CGPA. Search is case-insensitive and searches all columns.
+    </div>
+  </div>
+
+  <script>
+    "use strict";
+
+    const searchInput = document.getElementById("searchInput");
+    const tableBody = document.getElementById("tableBody");
+    const noResults = document.getElementById("noResults");
+    const rows = tableBody.querySelectorAll("tr");
+
+    // Real-time filter using 'input' event
+    searchInput.addEventListener("input", filterTable);
+
+    function filterTable() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        // Get all cell text content from the row
+        const rowText = row.textContent.toLowerCase();
+        
+        // Check if search term exists in row (case-insensitive)
+        if (rowText.includes(searchTerm)) {
+          row.classList.remove("hidden");
+          visibleCount++;
+        } else {
+          row.classList.add("hidden");
+        }
+      });
+
+      // Show/hide "No results found" message
+      if (visibleCount === 0) {
+        noResults.classList.add("show");
+      } else {
+        noResults.classList.remove("show");
+      }
+    }
+  </script>
+</body>
+</html>

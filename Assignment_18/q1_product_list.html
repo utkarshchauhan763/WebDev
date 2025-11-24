@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q1 - Product List Manager</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    .input-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    #productInput {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+    #productInput:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    #addBtn {
+      padding: 12px 24px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    #addBtn:hover {
+      background: #5568d3;
+    }
+    #productList {
+      list-style: none;
+    }
+    .product-item {
+      background: #f8f9fa;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    .product-item:hover {
+      background: #e9ecef;
+    }
+    .product-item.editing {
+      background: #fff3cd;
+    }
+    .product-text {
+      flex: 1;
+      font-size: 15px;
+      color: #333;
+    }
+    .product-text[contenteditable="true"] {
+      border: 2px solid #667eea;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: white;
+    }
+    .button-group {
+      display: flex;
+      gap: 8px;
+    }
+    button.edit-btn, button.delete-btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.3s;
+    }
+    button.edit-btn {
+      background: #28a745;
+      color: white;
+    }
+    button.edit-btn:hover {
+      background: #218838;
+    }
+    button.delete-btn {
+      background: #dc3545;
+      color: white;
+    }
+    button.delete-btn:hover {
+      background: #c82333;
+    }
+    .empty-state {
+      text-align: center;
+      color: #999;
+      padding: 40px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📦 Product List Manager</h1>
+    <div class="input-section">
+      <input type="text" id="productInput" placeholder="Enter product name...">
+      <button id="addBtn">Add Product</button>
+    </div>
+    <ul id="productList">
+      <li class="empty-state">No products yet. Add one above!</li>
+    </ul>
+  </div>
+
+  <script>
+    "use strict";
+
+    const productInput = document.getElementById("productInput");
+    const addBtn = document.getElementById("addBtn");
+    const productList = document.getElementById("productList");
+    let editingElement = null;
+
+    // Add product
+    function addProduct() {
+      const productName = productInput.value.trim();
+      if (!productName) return;
+
+      // Remove empty state if exists
+      const emptyState = productList.querySelector(".empty-state");
+      if (emptyState) emptyState.remove();
+
+      // Create list item
+      const li = document.createElement("li");
+      li.className = "product-item";
+      li.innerHTML = `
+        <span class="product-text">${productName}</span>
+        <div class="button-group">
+          <button class="edit-btn" data-action="edit">Edit</button>
+          <button class="delete-btn" data-action="delete">Delete</button>
+        </div>
+      `;
+      productList.appendChild(li);
+      productInput.value = "";
+      productInput.focus();
+    }
+
+    // Event delegation on parent <ul>
+    productList.addEventListener("click", (e) => {
+      const action = e.target.dataset.action;
+      const listItem = e.target.closest(".product-item");
+      
+      if (action === "edit") {
+        handleEdit(listItem);
+      } else if (action === "delete") {
+        handleDelete(listItem);
+      }
+    });
+
+    // Handle edit
+    function handleEdit(listItem) {
+      // Save any existing edit first
+      if (editingElement && editingElement !== listItem) {
+        saveEdit(editingElement);
+      }
+
+      const textSpan = listItem.querySelector(".product-text");
+      textSpan.contentEditable = true;
+      textSpan.focus();
+      
+      // Select all text
+      const range = document.createRange();
+      range.selectNodeContents(textSpan);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+
+      listItem.classList.add("editing");
+      editingElement = listItem;
+
+      // Auto-save on blur (clicking outside)
+      textSpan.addEventListener("blur", () => {
+        saveEdit(listItem);
+      }, { once: true });
+
+      // Save on Enter key
+      textSpan.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          textSpan.blur();
+        }
+      }, { once: true });
+    }
+
+    // Save edit
+    function saveEdit(listItem) {
+      const textSpan = listItem.querySelector(".product-text");
+      textSpan.contentEditable = false;
+      listItem.classList.remove("editing");
+      
+      // Clean up text
+      const text = textSpan.textContent.trim();
+      if (!text) {
+        listItem.remove();
+        checkEmpty();
+      } else {
+        textSpan.textContent = text;
+      }
+      
+      editingElement = null;
+    }
+
+    // Handle delete
+    function handleDelete(listItem) {
+      if (confirm("Delete this product?")) {
+        listItem.remove();
+        checkEmpty();
+      }
+    }
+
+    // Check if list is empty
+    function checkEmpty() {
+      if (productList.children.length === 0) {
+        productList.innerHTML = '<li class="empty-state">No products yet. Add one above!</li>';
+      }
+    }
+
+    // Add button click
+    addBtn.addEventListener("click", addProduct);
+
+    // Add on Enter key
+    productInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        addProduct();
+      }
+    });
+  </script>
+</body>
+</html>

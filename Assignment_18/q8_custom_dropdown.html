@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q8 - Custom Dropdown</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .dropdown-container {
+      position: relative;
+      width: 100%;
+    }
+    .dropdown-button {
+      width: 100%;
+      padding: 15px 20px;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      color: #333;
+      transition: all 0.3s;
+    }
+    .dropdown-button:hover {
+      border-color: #fa709a;
+    }
+    .dropdown-button.active {
+      border-color: #fa709a;
+      box-shadow: 0 0 0 3px rgba(250, 112, 154, 0.1);
+    }
+    .dropdown-arrow {
+      transition: transform 0.3s;
+      font-size: 12px;
+      color: #999;
+    }
+    .dropdown-button.active .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+    .dropdown-options {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: white;
+      border: 2px solid #fa709a;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 100;
+    }
+    .dropdown-options.show {
+      max-height: 300px;
+      opacity: 1;
+      overflow-y: auto;
+    }
+    .dropdown-option {
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .dropdown-option:last-child {
+      border-bottom: none;
+    }
+    .dropdown-option:hover {
+      background: #fff3f7;
+      color: #fa709a;
+    }
+    .dropdown-option.selected {
+      background: #fa709a;
+      color: white;
+      font-weight: 600;
+    }
+    .info {
+      background: #fff3f7;
+      border: 1px solid #fa709a;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #d63384;
+    }
+    .selected-value {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 Custom Dropdown</h1>
+    <p class="subtitle">Built without &lt;select&gt; tag using only JavaScript</p>
+    
+    <div class="dropdown-container">
+      <div class="dropdown-button" id="dropdownButton">
+        <span id="selectedText">Select a programming language</span>
+        <span class="dropdown-arrow">▼</span>
+      </div>
+      
+      <div class="dropdown-options" id="dropdownOptions">
+        <div class="dropdown-option" data-value="javascript">JavaScript</div>
+        <div class="dropdown-option" data-value="python">Python</div>
+        <div class="dropdown-option" data-value="java">Java</div>
+        <div class="dropdown-option" data-value="cpp">C++</div>
+        <div class="dropdown-option" data-value="ruby">Ruby</div>
+        <div class="dropdown-option" data-value="go">Go</div>
+        <div class="dropdown-option" data-value="rust">Rust</div>
+        <div class="dropdown-option" data-value="typescript">TypeScript</div>
+      </div>
+    </div>
+
+    <div class="selected-value" id="selectedValue">
+      No selection yet
+    </div>
+    
+    <div class="info">
+      💡 Click to open dropdown. Click outside to close. Uses capturing phase for outside click detection.
+    </div>
+  </div>
+
+  <script>
+    "use strict";
+
+    const dropdownButton = document.getElementById("dropdownButton");
+    const dropdownOptions = document.getElementById("dropdownOptions");
+    const selectedText = document.getElementById("selectedText");
+    const selectedValue = document.getElementById("selectedValue");
+    const options = dropdownOptions.querySelectorAll(".dropdown-option");
+
+    // Toggle dropdown
+    dropdownButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = dropdownOptions.classList.contains("show");
+      
+      if (isOpen) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    });
+
+    function openDropdown() {
+      dropdownOptions.classList.add("show");
+      dropdownButton.classList.add("active");
+    }
+
+    function closeDropdown() {
+      dropdownOptions.classList.remove("show");
+      dropdownButton.classList.remove("active");
+    }
+
+    // Handle option selection
+    options.forEach(option => {
+      option.addEventListener("click", (e) => {
+        e.stopPropagation();
+        
+        // Remove previous selection
+        options.forEach(opt => opt.classList.remove("selected"));
+        
+        // Mark as selected
+        option.classList.add("selected");
+        
+        // Update button text
+        selectedText.textContent = option.textContent;
+        
+        // Update selected value display
+        selectedValue.textContent = `Selected: ${option.textContent} (${option.dataset.value})`;
+        
+        // Close dropdown
+        closeDropdown();
+      });
+    });
+
+    // Close dropdown when clicking outside - using CAPTURING phase
+    // Capturing phase fires before bubbling phase
+    document.addEventListener("click", (e) => {
+      // If click is outside the dropdown container, close it
+      if (!e.target.closest(".dropdown-container")) {
+        closeDropdown();
+      }
+    }, true); // true = use capturing phase instead of bubbling
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeDropdown();
+      }
+    });
+  </script>
+</body>
+</html>

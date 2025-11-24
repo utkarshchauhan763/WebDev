@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q2 - Live Character Counter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 200px;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      resize: vertical;
+      transition: border-color 0.3s;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #f5576c;
+    }
+    .counter-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+    .counter {
+      font-size: 18px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 6px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      transition: all 0.3s;
+    }
+    .counter.warning {
+      background: #fff3cd;
+      color: #856404;
+    }
+    .counter.danger {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    #resetBtn {
+      padding: 10px 24px;
+      background: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    #resetBtn:hover {
+      background: #5a6268;
+    }
+    .info {
+      margin-top: 15px;
+      padding: 12px;
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✍️ Live Character Counter</h1>
+    <textarea id="textArea" placeholder="Start typing... (max 100 characters)"></textarea>
+    <div class="counter-section">
+      <div class="counter" id="counter">100 characters remaining</div>
+      <button id="resetBtn">Reset</button>
+    </div>
+    <div class="info">
+      💡 Counter turns <strong>yellow</strong> at 20 chars left and <strong>red</strong> at 0. Typing is blocked when limit is reached.
+    </div>
+  </div>
+
+  <script>
+    "use strict";
+
+    const textArea = document.getElementById("textArea");
+    const counter = document.getElementById("counter");
+    const resetBtn = document.getElementById("resetBtn");
+    const MAX_CHARS = 100;
+
+    function updateCounter() {
+      const currentLength = textArea.value.length;
+      const remaining = MAX_CHARS - currentLength;
+
+      counter.textContent = `${remaining} character${remaining !== 1 ? 's' : ''} remaining`;
+
+      // Remove all classes
+      counter.classList.remove("warning", "danger");
+
+      // Apply warning/danger classes
+      if (remaining <= 0) {
+        counter.classList.add("danger");
+      } else if (remaining <= 20) {
+        counter.classList.add("warning");
+      }
+    }
+
+    // Input event for real-time updates
+    textArea.addEventListener("input", updateCounter);
+
+    // Keydown event to prevent typing when limit reached
+    textArea.addEventListener("keydown", (e) => {
+      const currentLength = textArea.value.length;
+      
+      // Allow: backspace, delete, arrows, home, end, tab
+      const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", 
+                          "ArrowUp", "ArrowDown", "Home", "End", "Tab"];
+      
+      // If at limit and not an allowed key, prevent typing
+      if (currentLength >= MAX_CHARS && !allowedKeys.includes(e.key) && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+      }
+    });
+
+    // Reset button
+    resetBtn.addEventListener("click", () => {
+      textArea.value = "";
+      updateCounter();
+      textArea.focus();
+    });
+
+    // Initial update
+    updateCounter();
+  </script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q3 - Multi-Step Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+      width: 33.33%;
+      transition: width 0.3s ease;
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+      animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .step-title {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+    input:focus {
+      outline: none;
+      border-color: #4facfe;
+    }
+    input.error {
+      border-color: #dc3545;
+    }
+    .error-message {
+      color: #dc3545;
+      font-size: 13px;
+      margin-top: 5px;
+      display: none;
+    }
+    .error-message.show {
+      display: block;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+    }
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-back {
+      background: #6c757d;
+      color: white;
+    }
+    .btn-back:hover {
+      background: #5a6268;
+    }
+    .btn-next {
+      background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+    }
+    .btn-next:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+    }
+    .summary {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .summary h3 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .summary-item:last-child {
+      border-bottom: none;
+    }
+    .summary-label {
+      font-weight: 600;
+      color: #666;
+    }
+    .summary-value {
+      color: #333;
+    }
+    .success-message {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Multi-Step Registration</h1>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <form id="multiStepForm">
+      <!-- Step 1 -->
+      <div class="step active" data-step="1">
+        <div class="step-title">Step 1 of 3</div>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your full name">
+          <div class="error-message" id="nameError">Name is required (min 2 characters)</div>
+        </div>
+        <div class="button-group">
+          <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step" data-step="2">
+        <div class="step-title">Step 2 of 3</div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email">
+          <div class="error-message" id="emailError">Valid email is required</div>
+        </div>
+        <div class="button-group">
+          <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step" data-step="3">
+        <div class="step-title">Step 3 of 3</div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password (min 6 chars)">
+          <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
+        </div>
+        <div class="button-group">
+          <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+          <button type="button" class="btn-next" onclick="showSummary()">Complete</button>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="step" data-step="4">
+        <div class="step-title">Registration Summary</div>
+        <div class="summary">
+          <h3>Review Your Information</h3>
+          <div class="summary-item">
+            <span class="summary-label">Name:</span>
+            <span class="summary-value" id="summaryName"></span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Email:</span>
+            <span class="summary-value" id="summaryEmail"></span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Password:</span>
+            <span class="summary-value">••••••••</span>
+          </div>
+        </div>
+        <div class="success-message">
+          ✅ Form Submitted Successfully!
+        </div>
+        <div class="button-group">
+          <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+          <button type="button" class="btn-next" onclick="resetForm()">Start Over</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    "use strict";
+
+    let currentStep = 1;
+    const totalSteps = 3;
+
+    function updateProgressBar() {
+      const progressFill = document.getElementById("progressFill");
+      const percentage = (currentStep / totalSteps) * 100;
+      progressFill.style.width = percentage + "%";
+    }
+
+    function showStep(step) {
+      const steps = document.querySelectorAll(".step");
+      steps.forEach(s => s.classList.remove("active"));
+      document.querySelector(`.step[data-step="${step}"]`).classList.add("active");
+      currentStep = step;
+      updateProgressBar();
+    }
+
+    function validateName() {
+      const name = document.getElementById("name");
+      const error = document.getElementById("nameError");
+      const value = name.value.trim();
+
+      if (value.length < 2) {
+        name.classList.add("error");
+        error.classList.add("show");
+        return false;
+      }
+      name.classList.remove("error");
+      error.classList.remove("show");
+      return true;
+    }
+
+    function validateEmail() {
+      const email = document.getElementById("email");
+      const error = document.getElementById("emailError");
+      const value = email.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(value)) {
+        email.classList.add("error");
+        error.classList.add("show");
+        return false;
+      }
+      email.classList.remove("error");
+      error.classList.remove("show");
+      return true;
+    }
+
+    function validatePassword() {
+      const password = document.getElementById("password");
+      const error = document.getElementById("passwordError");
+      const value = password.value;
+
+      if (value.length < 6) {
+        password.classList.add("error");
+        error.classList.add("show");
+        return false;
+      }
+      password.classList.remove("error");
+      error.classList.remove("show");
+      return true;
+    }
+
+    function nextStep() {
+      let isValid = false;
+
+      if (currentStep === 1) {
+        isValid = validateName();
+      } else if (currentStep === 2) {
+        isValid = validateEmail();
+      } else if (currentStep === 3) {
+        isValid = validatePassword();
+      }
+
+      if (isValid && currentStep < totalSteps) {
+        showStep(currentStep + 1);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        showStep(currentStep - 1);
+      }
+    }
+
+    function showSummary() {
+      if (validatePassword()) {
+        document.getElementById("summaryName").textContent = document.getElementById("name").value;
+        document.getElementById("summaryEmail").textContent = document.getElementById("email").value;
+        showStep(4);
+      }
+    }
+
+    function resetForm() {
+      document.getElementById("multiStepForm").reset();
+      document.querySelectorAll("input").forEach(input => {
+        input.classList.remove("error");
+      });
+      document.querySelectorAll(".error-message").forEach(msg => {
+        msg.classList.remove("show");
+      });
+      showStep(1);
+    }
+
+    // Initial setup
+    updateProgressBar();
+  </script>
+</body>
+</html>
