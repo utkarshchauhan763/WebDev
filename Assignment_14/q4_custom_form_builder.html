@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 - Custom Form Builder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+        
+        .builder-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .builder-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .add-field-btn {
+            background: #3498db;
+            color: white;
+        }
+        
+        .add-field-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .generate-btn {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .generate-btn:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+        
+        .get-data-btn {
+            background: #e67e22;
+            color: white;
+        }
+        
+        .get-data-btn:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+        
+        .clear-btn {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .clear-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .field-config {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .field-config.active {
+            display: block;
+        }
+        
+        .config-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .config-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input[type="text"], select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+        }
+        
+        #dynamicForm {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            min-height: 100px;
+            border: 2px dashed #bdc3c7;
+        }
+        
+        .generated-form {
+            border: 2px solid #27ae60 !important;
+        }
+        
+        .form-field {
+            margin-bottom: 1rem;
+        }
+        
+        .form-field label {
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-field input, .form-field select, .form-field textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .form-data {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .placeholder-text {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            padding: 2rem;
+        }
+        
+        .submit-btn {
+            background: #9b59b6;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background: #8e44ad;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Custom Form Builder</h1>
+        
+        <div class="builder-section">
+            <h2>Form Configuration</h2>
+            
+            <div class="builder-controls">
+                <button class="add-field-btn" onclick="formBuilder.showFieldConfig()">➕ Add Field</button>
+                <button class="generate-btn" onclick="formBuilder.generateForm()">🚀 Generate Form</button>
+                <button class="get-data-btn" onclick="formBuilder.getFormData()">📊 Get Form Data</button>
+                <button class="clear-btn" onclick="formBuilder.clearForm()">🗑️ Clear All</button>
+            </div>
+
+            <div class="field-config" id="fieldConfig">
+                <h3>Add New Field</h3>
+                <div class="config-row">
+                    <div class="config-group">
+                        <label>Field Type</label>
+                        <select id="fieldType">
+                            <option value="text">Text Input</option>
+                            <option value="email">Email</option>
+                            <option value="password">Password</option>
+                            <option value="number">Number</option>
+                            <option value="textarea">Textarea</option>
+                            <option value="select">Dropdown</option>
+                            <option value="radio">Radio Buttons</option>
+                            <option value="checkbox">Checkbox</option>
+                        </select>
+                    </div>
+                    <div class="config-group">
+                        <label>Field Label</label>
+                        <input type="text" id="fieldLabel" placeholder="Enter field label">
+                    </div>
+                    <div class="config-group">
+                        <label>Field Name</label>
+                        <input type="text" id="fieldName" placeholder="Enter field name">
+                    </div>
+                </div>
+                <div class="config-row">
+                    <div class="config-group">
+                        <label>Placeholder (optional)</label>
+                        <input type="text" id="fieldPlaceholder" placeholder="Enter placeholder text">
+                    </div>
+                    <div class="config-group">
+                        <label>Options (for select/radio, comma-separated)</label>
+                        <input type="text" id="fieldOptions" placeholder="Option1, Option2, Option3">
+                    </div>
+                </div>
+                <button class="add-field-btn" onclick="formBuilder.addField()">Add Field</button>
+                <button class="clear-btn" onclick="formBuilder.hideFieldConfig()">Cancel</button>
+            </div>
+        </div>
+
+        <div class="builder-section">
+            <h2>Generated Form</h2>
+            <div id="dynamicForm">
+                <div class="placeholder-text">
+                    Your dynamic form will appear here.<br>
+                    Add fields using the controls above and click "Generate Form".
+                </div>
+            </div>
+            <div id="formDataDisplay"></div>
+        </div>
+    </div>
+
+    <script src="q4_custom_form_builder.js"></script>
+</body>
+</html>
